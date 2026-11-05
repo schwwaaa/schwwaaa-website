@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 72" width="96" height="72" role="img" aria-label="service solution architecting">
+  <defs>
+    <filter id="px" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="3" dy="3" stdDeviation="0" flood-color="#6b6458" flood-opacity=".8"/></filter>
+  </defs>
+  <g filter="url(#px)"><rect x="14" y="14" width="68" height="44" fill="#15347a" stroke="#606060" stroke-width="4"/><circle cx="48" cy="36" r="8" fill="none" stroke="#63e5ff" stroke-width="4"/><path d="M22 50h52M22 22h52M30 14v44M66 14v44" stroke="#244a9a" stroke-width="2" opacity=".85"/></g>
+</svg>

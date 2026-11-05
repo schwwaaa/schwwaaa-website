@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 72" width="96" height="72" role="img" aria-label="map press room">
+  <defs>
+    <filter id="px" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="3" dy="3" stdDeviation="0" flood-color="#6b6458" flood-opacity=".8"/></filter>
+  </defs>
+  <g filter="url(#px)"><path d="M31 12h36v48H24V20z" fill="#fff" stroke="#000" stroke-width="4"/><path d="M31 12v8h-7" fill="none" stroke="#000" stroke-width="4"/><path d="M34 25h23M34 33h23M34 41h17" stroke="#000" stroke-width="4"/><rect x="18" y="23" width="8" height="32" fill="#fff3b7" stroke="#000" stroke-width="4"/><path d="M72 22l11 7-11 7" fill="none" stroke="#cf302b" stroke-width="4"/></g>
+</svg>

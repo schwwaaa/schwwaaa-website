@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 272" role="img" aria-label="Two employees high-fiving under a star"><title>Two employees high-fiving under a star</title>
+<ellipse cx="160" cy="264" rx="140" ry="8" fill="#333366" opacity=".15"/>
+<path d="M160 6 L170 30 L196 32 L176 48 L184 74 L160 60 L136 74 L144 48 L124 32 L150 30 Z" fill="#FFCC33"/>
+
+<path d="M62 170 C58 200 52 230 50 256" fill="none" stroke="#333366" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M80 170 C86 200 92 230 94 256" fill="none" stroke="#333366" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M36 258 Q50 248 64 258 L64 264 L36 264 Z" fill="#333366"/>
+<path d="M80 258 Q94 248 110 260 L110 264 L80 264 Z" fill="#333366"/>
+<path d="M50 92 Q70 82 90 92 L98 178 Q70 186 42 178 Z" fill="#FF6666"/>
+<path d="M84 100 C120 90 140 60 150 40" fill="none" stroke="#CC99FF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="65" y="72" width="10" height="14" fill="#CC99FF"/>
+<circle cx="70" cy="66" r="12" fill="#CC99FF"/>
+<path d="M57 64 Q58 48 72 50 Q86 52 82 66 Q76 56 66 58 Z" fill="#333366"/>
+<path d="M58 104 C40 130 44 150 60 160" fill="none" stroke="#CC99FF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+
+<path d="M242 170 C238 200 232 230 230 256" fill="none" stroke="#6666FF" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M260 170 C266 200 272 230 274 256" fill="none" stroke="#6666FF" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M216 258 Q230 248 244 258 L244 264 L216 264 Z" fill="#333366"/>
+<path d="M260 258 Q274 248 290 260 L290 264 L260 264 Z" fill="#333366"/>
+<path d="M230 92 Q250 82 270 92 L278 178 Q250 186 222 178 Z" fill="#33CCCC"/>
+<path d="M236 100 C200 90 180 60 170 40" fill="none" stroke="#FF9933" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="245" y="72" width="10" height="14" fill="#FF9933"/>
+<circle cx="250" cy="66" r="12" fill="#FF9933"/>
+<path d="M237 64 Q238 48 252 50 Q266 52 262 66 Q256 56 246 58 Z" fill="#333366"/>
+<path d="M262 104 C280 130 276 150 260 160" fill="none" stroke="#FF9933" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="150" cy="40" r="8" fill="#CC99FF"/><circle cx="170" cy="40" r="8" fill="#FF9933"/>
+<path d="M140 18 L134 8 M160 14 V2 M180 18 L186 8" stroke="#FF6666" stroke-width="4" stroke-linecap="round"/>
+</svg>

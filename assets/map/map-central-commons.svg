@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 72" width="96" height="72" role="img" aria-label="map central commons">
+  <defs>
+    <filter id="px" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="3" dy="3" stdDeviation="0" flood-color="#6b6458" flood-opacity=".8"/></filter>
+  </defs>
+  <g filter="url(#px)"><circle cx="48" cy="36" r="28" fill="#e6d66f" stroke="#000" stroke-width="4"/><circle cx="48" cy="36" r="17" fill="#5fd857" stroke="#000" stroke-width="4"/><circle cx="42" cy="32" r="3" fill="#000"/><circle cx="54" cy="32" r="3" fill="#000"/><circle cx="48" cy="44" r="3" fill="#000"/></g>
+</svg>

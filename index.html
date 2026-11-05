@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>schwwaaa inc. — Shaping tomorrow ... today</title>
+  <meta name="description"
+    content="Schwwaaa architects, audits, builds, and prototypes strange useful systems. Corporate dreams since 1999.">
+  <meta name="author" content="schwwaaa">
+  <meta property="og:title" content="schwwaaa online — Shaping tomorrow ... today">
+  <meta property="og:description"
+    content="A speculative systems studio and digital imagination factory. 17 projects and counting.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/logo.png">
+  <meta name="theme-color" content="#000066">
+  <link rel="icon" href="assets/logo-tiny.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<!-- PERIOD NOTE: in 1999 this line would read
+     <body background="tile.gif" bgcolor="#CCCCFF" link="#0000CC" vlink="#663399">
+     Today the same job is done in styles.css. -->
+
+<body class="home">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ FAKE FLASH INTRO (hidden unless script.js shows it) ============ -->
+  <div id="intro" class="intro" hidden role="dialog" aria-label="Intro animation">
+    <div class="stage">
+      <svg class="streaks" viewBox="0 0 200 200" aria-hidden="true">
+        <polygon points="20,30 40,64 0,64" fill="#FF6666" />
+        <path d="M150 20 q8 -10 16 0 t16 0" stroke="#6666FF" stroke-width="5" fill="none" stroke-linecap="round" />
+        <circle cx="176" cy="170" r="12" fill="none" stroke="#FFCC33" stroke-width="5" />
+        <path d="M10 170 a16 16 0 0 1 32 0 Z" fill="#33CCCC" />
+      </svg>
+      <img class="logo" src="assets/logo.png" alt="schwwaaa">
+      <div class="bar"><i></i></div>
+      <p class="pct">LOADING synergy.swf ... 0%</p>
+      <button class="enter" type="button">ENTER</button>
+    </div>
+    <button class="skip" type="button">SKIP INTRO &raquo;&raquo;</button>
+  </div>
+
+  <div class="nosignal" aria-hidden="true"><span>SYNERGY LOST · CH 99</span></div>
+
+  <div class="page">
+
+    <!-- ============ MASTHEAD ============ -->
+    <header class="masthead" id="top">
+      <!-- Animated paper-cut Memphis accents. Decorative only; keyboard safe. -->
+      <div class="mast-ornaments" aria-hidden="true">
+        <i class="ornament orbit-star"></i><i class="ornament hoop"></i>
+        <i class="ornament curl"></i><i class="ornament grid-dots"></i>
+        <i class="ornament halfmoon"></i><i class="ornament ziggy"></i>
+        <i class="ornament tiny-star"></i>
+      </div>
+      <svg class="deco" viewBox="0 0 780 190" preserveAspectRatio="none" aria-hidden="true">
+        <!-- Memphis confetti floating behind the masthead -->
+        <path d="M20 30 q10 -14 20 0 t20 0 t20 0" stroke="#6666FF" stroke-width="5" fill="none"
+          stroke-linecap="round" />
+        <polygon points="700,22 724,62 676,62" fill="#FF6666" />
+        <circle cx="742" cy="140" r="14" fill="none" stroke="#FFCC33" stroke-width="5" />
+        <path d="M600 170 l10 -12 l10 12 l10 -12 l10 12" stroke="#33CCCC" stroke-width="4" fill="none" />
+        <path d="M440 190 a40 40 0 0 1 80 0 Z" fill="#FF99CC" />
+        <g fill="#333366">
+          <circle cx="370" cy="20" r="3" />
+          <circle cx="382" cy="20" r="3" />
+          <circle cx="394" cy="20" r="3" />
+          <circle cx="370" cy="32" r="3" />
+          <circle cx="382" cy="32" r="3" />
+          <circle cx="394" cy="32" r="3" />
+        </g>
+        <path d="M30 150 h16 m-8 -8 v16" stroke="#FF6666" stroke-width="4" />
+      </svg>
+      <a class="splat" href="index.html" aria-label="schwwaaa home">
+        <!-- the blob behind the logo: one smooth, lopsided closed curve -->
+        <svg viewBox="0 0 360 160" aria-hidden="true">
+          <path
+            d="M40 40 C70 0 170 10 220 18 C290 28 350 30 352 82 C354 132 290 150 210 148 C130 146 60 158 26 120 C4 96 16 64 40 40 Z"
+            fill="#FFCC33" stroke="#333366" stroke-width="4" />
+          <path d="M58 132 C100 150 180 140 240 138" stroke="#FF6666" stroke-width="6" fill="none"
+            stroke-linecap="round" />
+        </svg>
+        <img src="assets/logo.png" alt="schwwaaa">
+      </a>
+      <div class="bubble" aria-hidden="true">Shaping tomorrow <span class="blink">...</span> today!</div>
+      <div class="visionary"><img src="assets/people/visionary.svg" alt="" width="150"></div>
+      <!-- Two existing Corporate Memphis illustrations bring three more characters into
+           the space previously occupied by search; smaller screens show the high-five. -->
+      <div class="mast-crew" aria-hidden="true">
+        <img class="crew-highfive" src="assets/people/highfive.svg" alt="">
+        <img class="crew-builder" src="assets/people/builder.svg" alt="">
+      </div>
+
+      <!-- Search and masthead shortcuts retired; help sticker at bottom-right. -->
+      <div class="mast-side">
+        <a class="help-corner" href="construction.html?p=Help%20Desk" title="Help desk" aria-label="Help desk">?</a>
+      </div>
+    </header>
+
+    <!-- ============ TAB NAV ============ -->
+    <nav class="tabs" aria-label="Main">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="projects.html">Products</a>
+      <a href="https://live.schwwaaa.net">Live</a>
+      <a href="#pressroom">Press</a>
+      <a href="construction.html?p=Contact">Contact</a>
+    </nav>
+
+    <!-- BROADCAST RIBBON: edit messages and stream link in site-config.js -->
+    <a class="bulletin-bar" id="broadcast" href="https://live.schwwaaa.net"
+      aria-label="Open SCHWWAAA Live — broadcasts and upcoming events" data-state="upcoming">
+      <div class="bulletin-head" aria-hidden="true"><span class="bulletin-spark">&#10022;</span><span
+          class="bulletin-label" id="bulletin-label">UP NEXT!</span><span class="bulletin-led"></span></div>
+      <div class="bulletin-viewport">
+        <p class="bulletin-static" id="bulletin-static">More peculiar transmissions and live events coming soon. Stay
+          tuned!</p>
+        <div class="bulletin-track" id="bulletin-track" aria-hidden="true"></div>
+      </div>
+      <span id="bulletin-link" class="bulletin-action" aria-hidden="true">VISIT LIVE &#10138;</span>
+      <span class="bulletin-doodle" aria-hidden="true">&#10040;</span>
+    </a>
+
+    <!-- ============ THE LAYOUT TABLE ============
+       A real 1999-style 3-column table. role="presentation" tells screen
+       readers "this is layout, not data". See styles.css section 6 & 18. -->
+    <table class="layout" role="presentation">
+      <tr>
+
+        <!-- ---------- LEFT RAIL: the campus ---------- -->
+        <td class="col-left">
+          <!-- CAMPUS NAV temporarily disabled, retained for later reuse
+        <h2 class="rail-title">&#9733; THE CAMPUS &#9733;</h2>
+        <ul class="campus">
+          <li><a href="construction.html?p=Info%20Booth"><span class="dot"><img src="assets/map/map-info-booth.svg" alt=""></span><span>Info Booth<small>visitor center</small></span></a></li>
+          <li><a href="construction.html?p=Labs"><span class="dot"><img src="assets/map/map-labs.svg" alt=""></span><span>Labs<small>prototype campus</small></span></a></li>
+          <li><a href="#services"><span class="dot"><img src="assets/map/map-facility-grid.svg" alt=""></span><span>Facility Grid<small>service works</small></span></a></li>
+          <li><a href="construction.html?p=Investor%20Hall"><span class="dot"><img src="assets/map/map-investor-hall.svg" alt=""></span><span>Investor Hall<small>numbers &amp; trust</small></span></a></li>
+          <li><a href="projects.html"><span class="dot"><img src="assets/map/map-project-block.svg" alt=""></span><span>Project Block<small>catalog</small></span></a></li>
+          <li><a href="#pressroom"><span class="dot"><img src="assets/map/map-press-room.svg" alt=""></span><span>Press Room<small>bulletins</small></span></a></li>
+          <li><a href="construction.html?p=Help%20Desk"><span class="dot"><img src="assets/map/map-help-desk.svg" alt=""></span><span>Help Desk<small>human-ish</small></span></a></li>
+        </ul>
+        END CAMPUS NAV -->
+
+          <div class="rail-extras">
+            <div class="rail-box citizen">
+              <h3>citizen status:</h3>
+              <b>GUEST</b>
+              <a class="bevel" href="https://www.youtube.com/watch?v=e7QLoMve8BE">BECOME A MEMBER</a>
+            </div>
+
+            <div class="rail-box">
+              <h3>days since corporate dreams began</h3>
+              <div class="odometer" role="img" aria-label="days since 1999">
+                <span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span></div>
+              <p class="fine">since 01.01.1999</p>
+            </div>
+
+            <div class="rail-box">
+              <h3>&#9888; warning &#9888;</h3>
+              <button class="panic" type="button">DO NOT PRESS</button>
+            </div>
+          </div>
+        </td>
+
+        <!-- ---------- MAIN COLUMN ---------- -->
+        <td class="col-main">
+          <main id="main" tabindex="-1">
+
+            <section class="box welcome" id="about" aria-labelledby="welcome-title">
+              <div class="box-body">
+                <div>
+                  <h1 id="welcome-title">Hey there, <span class="swoosh">welcome!</span></h1>
+                  <p><b class="rainbow">schwwaaa</b> is a speculative systems studio and digital imagination factory. We
+                    architect, audit, build, and prototype the tools, platforms, and interfaces that power tomorrow’s
+                    world — whether the
+                    world asked for them or not.</p>
+                </div>
+                <img class="sitter" src="assets/people/sitter.svg" alt="">
+              </div>
+            </section>
+
+            <!-- ON THE AIR: featured-project TV. Only projects that already
+               have written copy are featured here. Add a slide by copying one. -->
+            <section class="onair" aria-label="Featured projects">
+              <div class="screen">
+                <div class="slide on" style="--slide-bg:#FFCC33">
+                  <img src="assets/icons/videobeaux.png" alt="">
+                  <div>
+                    <span class="kicker">&#9679; NOW ON THE AIR</span>
+                    <h3>Videobeaux</h3>
+                    <p>Broadcast the unreal. Your friendly multilateral video toolkit built for artists by artists.</p>
+                    <a class="play-btn" href="https://videobeaux.online">&#9654; PLAY NOW</a>
+                  </div>
+                </div>
+                <div class="slide" style="--slide-bg:#99CC99">
+                  <img src="assets/icons/illogicafactory.png" alt="">
+                  <div>
+                    <span class="kicker">&#9679; NEW FROM SCHWWAAA LABS</span>
+                    <h3>Illogica Factory</h3>
+                    <p>Automated AI cannibalism. A creative automation lab where logic goes to die and features are
+                      born.</p>
+                    <a class="play-btn" href="https://schwwaaa.github.io/illogica-factory">&#9654; ENTER THE FACTORY</a>
+                  </div>
+                </div>
+                <div class="slide" style="--slide-bg:#CC99FF">
+                  <img src="assets/icons/webglo.png" alt="">
+                  <div>
+                    <span class="kicker">&#9679; GLOWING IN THE DARK</span>
+                    <h3>Webglo</h3>
+                    <p>Decentralized video art on the Bitcoin blockchain.</p>
+                    <a class="play-btn" href="https://webglo.online">&#9654; PLAY NOW</a>
+                  </div>
+                </div>
+                <div class="slide" style="--slide-bg:#33CCCC">
+                  <img src="assets/icons/vs10.png" alt="">
+                  <div>
+                    <span class="kicker">&#9679; PRESS PLAY</span>
+                    <h3>VideoSampler10</h3>
+                    <p>A tiny browser-based video sampler for slicing local video into playable pads.</p>
+                    <a class="play-btn" href="https://schwwaaa.github.io/VideoSampler10_VS10/">&#9654; PLAY NOW</a>
+                  </div>
+                </div>
+              </div>
+              <div class="knobs"><span class="chnum">CH 01</span><span class="dots"></span><span class="vol">VOL<i
+                    class="knob"></i><i class="knob"></i></span></div>
+            </section>
+
+            <section class="box" id="services" aria-labelledby="svc-title">
+              <h2 id="svc-title"><span class="ico">&#9733;</span> what we do</h2>
+              <div class="services">
+                <div><img src="assets/svc/service-solution-architecting.svg" alt="">Solution architecting</div>
+                <div><img src="assets/svc/service-system-auditing.svg" alt="">System auditing</div>
+                <div><img src="assets/svc/service-software-development.svg" alt="">Software development</div>
+                <div><img src="assets/svc/service-prototyping.svg" alt="">Prototyping</div>
+                <img class="hand" src="assets/people/hand.svg" alt="">
+              </div>
+            </section>
+
+            <!-- PROJECT CATALOG — all 17. Template for a new card:
+               <a class="card" href="URL"><span class="ch"><span>CH18</span><span>&#9733;</span></span>
+                 <span class="art"><img src="assets/icons/NAME.png" alt=""></span>
+                 <b>Name</b><span class="go">view project &raquo;</span></a>      -->
+            <section class="box" id="projects" aria-labelledby="proj-title">
+              <h2 id="proj-title"><span class="ico">&#9733;</span> project catalog <a href="projects.html">full catalog
+                  &raquo;</a></h2>
+              <div class="cards">
+                <a class="card" href="https://videobeaux.online"><span
+                    class="sticker">BETA</span><span
+                    class="ch"><span>CH01</span><span>&#9733;</span></span><span class="art"><img
+                      src="assets/icons/videobeaux.png" alt=""></span><b>Videobeaux</b><i>Broadcast the unreal.</i><span
+                    class="go">view project &raquo;</span></a>
+                <a class="card" href="https://schwwaaa.github.io/AdSlicer/"><span
+                    class="ch"><span>CH02</span><span>&#9733;</span></span><span class="art"><img
+                      src="assets/icons/adslicer.png" alt=""></span><b>AdSlicer</b><span class="go">view project
+                    &raquo;</span></a>
+                <a class="card" href="https://schwwaaa.github.io/drop-zone-ops/"><span
+                    class="ch"><span>CH03</span><span>&#9733;</span></span><span class="art"><img
+                      src="assets/icons/dropzoneops.png" alt=""></span><b>drop-zone-ops</b><span class="go">view project
+                    &raquo;</span></a>
+                <a class="card" href="https://schwwaaa.github.io/huff"><span
+                    class="sticker">NEW</span><span
+                    class="ch"><span>CH04</span><span>&#9733;</span></span><span class="art"><img
+                      src="assets/icons/huff.png" alt=""></span><b>huff</b><span class="go">view project
+                    &raquo;</span></a>
+                <a class="card" href="https://schwwaaa.github.io/raspi-composite-player/"><span
+                    class="ch"><span>CH05</span><span>&#9733;</span></span><span class="art"><img
+                      src="assets/icons/rpi.png" alt=""></span><b>Raspi Composite Player</b><span class="go">view
+                    project &raquo;</span></a>
+                <a class="card" href="https://schwwaaa.github.io/mastacraf/"><span
+                    class="ch"><span>CH06</span><span>&#9733;</span></span><span class="art"><img
+                      src="assets/icons/mastacraf.png" alt=""></span><b>mastacraf</b><span class="go">view project
+                    &raquo;</span></a>
+                <a class="card" href="https://schwwaaa.github.io/VideoSampler10_VS10/"><span
+                    class="ch"><span>CH07</span><span>&#9733;</span></span><span class="art"><img
+                      src="assets/icons/vs10.png" alt=""></span><b>VideoSampler10_VS10</b><span class="go">view project
+                    &raquo;</span></a>
+                <a class="card" href="https://webglo.online"><span
+                    class="ch"><span>CH08</span><span>&#9733;</span></span><span class="art"><img
+                      src="assets/icons/webglo.png" alt=""></span><b>Webglo</b><span class="go">view project
+                    &raquo;</span></a>
+                <a class="card" href="https://schwwaaa.github.io/junkpile/"><span
+                    class="ch"><span>CH9</span><span>&#9733;</span></span><span class="art"><img
+                      src="assets/icons/junkpile.png" alt=""></span><b>junkpile</b><span class="go">view project
+                    &raquo;</span></a>                    
+                <!-- <a class="card" href="https://schwwaaa.github.io/TURRRBO/"><span
+                    class="ch"><span>CH10</span><span>&#9733;</span></span><span class="art"><img
+                      src="assets/icons/turrrbo.png" alt=""></span><b>TURRRBO</b><span class="go">view project
+                    &raquo;</span></a>
+                <a class="card" href="https://schwwaaa.github.io/illogica-factory"><span
+                    class="sticker">BETA</span><span class="ch"><span>CH11</span><span>&#9733;</span></span><span
+                    class="art"><img src="assets/icons/illogicafactory.png" alt=""></span><b>Illogica Factory</b><span
+                    class="go">view project &raquo;</span></a>
+                <a class="card" href="https://schwwaaa.github.io/obs-relay/"><span
+                    class="ch"><span>CH12</span><span>&#9733;</span></span><span class="art"><img
+                      src="assets/icons/obsrelay.png" alt=""></span><b>obs-relay</b><span class="go">view project
+                    &raquo;</span></a>
+                <a class="card soon" href="construction.html?p=Viewfinder"><span class="sticker soon">SOON</span><span
+                    class="ch"><span>CH13</span><span>&#9733;</span></span><span class="art"><img
+                      src="assets/icons/project-viewfinder.svg" alt=""></span><b>Viewfinder</b><span class="go">under
+                    construction</span></a>
+                <a class="card soon" href="construction.html?p=Api-gateway"><span class="sticker soon">SOON</span><span
+                    class="ch"><span>CH14</span><span>&#9733;</span></span><span class="art"><img
+                      src="assets/icons/project-api-gateway.svg" alt=""></span><b>Api-gateway</b><span class="go">under
+                    construction</span></a>
+                <a class="card soon" href="construction.html?p=Scoping-voices"><span
+                    class="sticker soon">SOON</span><span class="ch"><span>CH15</span><span>&#9733;</span></span><span
+                    class="art"><img src="assets/icons/project-scoping-voices.svg"
+                      alt=""></span><b>Scoping-voices</b><span class="go">under construction</span></a>
+                <a class="card soon" href="construction.html?p=Kowabungataug"><span
+                    class="sticker soon">SOON</span><span class="ch"><span>CH16</span><span>&#9733;</span></span><span
+                    class="art"><img src="assets/icons/project-kowabungataug.svg"
+                      alt=""></span><b>Kowabungataug</b><span class="go">under construction</span></a>
+                <a class="card soon" href="construction.html?p=Ordvault"><span class="sticker soon">SOON</span><span
+                    class="ch"><span>CH17</span><span>&#9733;</span></span><span class="art"><img
+                      src="assets/icons/project-ordvault.svg" alt=""></span><b>Ordvault</b><span class="go">under
+                    construction</span></a>
+                <a class="card soon" href="construction.html?p=Help%20Desk"><span
+                    class="ch"><span>CH18</span><span>?</span></span><span class="art"><img
+                      src="assets/map/map-help-desk.svg" alt=""></span><b>Your project here?</b><i>Suspicious note in
+                    the margin? Bring it.</i><span class="go">talk to the help desk</span></a> -->
+              </div>
+            </section>
+
+          </main>
+        </td>
+
+        <!-- ---------- RIGHT RAIL ---------- -->
+        <td class="col-right">
+
+          <section class="crt" aria-label="Corporate dreams since 1999">
+            <img class="plant" src="assets/people/plant.svg" alt="">
+            <div class="tube">
+              <div class="glass">
+                <!-- Replace assets/tv/schwwaaa-loop.gif with your own looping GIF anytime. -->
+                <img class="crt-animated" src="assets/tv/schwwaaa-loop.gif" alt="Looping Memphis-style video collage"
+                  width="160" height="100" loading="lazy">
+                <img class="crt-still" src="assets/tv/schwwaaa-loop-still.png" alt="" width="160" height="100"
+                  aria-hidden="true" loading="lazy">
+              </div>
+            </div>
+            <div class="stand"></div>
+            <p>Corporate<br>Dreams<br>Since 1999</p>
+          </section>
+
+          <!-- <section class="sticky" aria-label="Today's directive">
+          <h2>today’s directive:</h2>
+          <p>Build it.<br>Break it.<br>Schwwaaa it.</p>
+          <small>no problems, only interesting solutions.</small>
+        </section> -->
+
+          <section class="news" id="pressroom" aria-labelledby="news-title">
+            <h2 id="news-title">latest <em>news!</em></h2>
+            <article><time datetime="2001-05-16">05.16.2001</time>
+              <p>Illogica Factory 2.1 now in open beta</p>
+            </article>
+            <article><time datetime="2001-05-15">05.15.2001</time>
+              <p>Webglo release candidate posted</p>
+            </article>
+            <article><time datetime="2001-05-14">05.14.2001</time>
+              <p>Scoping-voices voicepack #7 live</p>
+            </article>
+            <article><time datetime="2001-05-13">05.13.2001</time>
+              <p>Investor memo: Q1 reflections</p>
+            </article>
+            <a class="more" href="construction.html?p=Press%20Room">&gt; more updates</a>
+          </section>
+
+          <section class="ad" aria-label="Advertisement">
+            <span class="eyebrow">NEW FROM SCHWWAAA LABS</span>
+            <strong>Illogica<br>Factory</strong>
+            <img src="assets/icons/illogicafactory.png" alt="">
+            <span class="flash">MAKE LOGIC BEND!</span>
+            <a class="play-btn" href="https://schwwaaa.github.io/illogica-factory">ENTER &rarr;</a>
+          </section>
+
+          <section class="newsletter" aria-labelledby="newsletter-title">
+            <span class="newsletter-confetti" aria-hidden="true">&#10022; &#9679; &#9650;</span>
+            <span class="newsletter-stamp">TRANSMISSION LIST!</span>
+            <h2 id="newsletter-title">get the<br><span>schwwaaa</span><br>newsletter!</h2>
+            <p>New projects, odd transmissions, live broadcasts &amp; events. Straight to your inbox.</p>
+            <!-- Connect signup in site-config.js; no email is saved until then. -->
+            <form id="newsletter-form" method="post">
+              <label for="newsletter-email">YOUR EMAIL ADDRESS</label>
+              <input id="newsletter-email" type="email" name="email" autocomplete="email"
+                placeholder="you@the-internet.com" required>
+              <button class="newsletter-button" type="submit" disabled>COUNT ME IN! &#10138;</button>
+              <p class="newsletter-note" id="newsletter-note" aria-live="polite">Signup connection coming soon.</p>
+            </form>
+            <span class="newsletter-stars" aria-hidden="true">&#9733; &#9734; &#9733;</span>
+          </section>
+
+          <!-- COMING SOON TO THE CAMPUS temporarily disabled; retained for review
+        <section class="soonbox" aria-labelledby="soon-title">
+          <img src="assets/people/builder.svg" alt="">
+          <h2 id="soon-title">coming soon to the campus</h2>
+          <ul>
+            <li><a href="construction.html?p=Central%20Commons">Central Commons</a></li>
+            <li><a href="construction.html?p=The%20Archive">The Archive</a></li>
+            <li><a href="construction.html?p=Careers">Careers</a></li>
+            <li><a href="construction.html?p=Guestbook">Guestbook</a></li>
+          </ul>
+        </section>
+        END COMING SOON -->
+
+
+        </td>
+      </tr>
+    </table>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer" id="contact">
+      <img class="highfive" src="assets/people/highfive.svg" alt="">
+      <div class="webring">
+        <a href="#" data-ring="prev">&laquo; prev</a> |
+        <span class="ringname">&#9734; the schwwaaa ring &#9734;</span> |
+        <a href="#" data-ring="random">random</a> |
+        <a href="#" data-ring="next">next &raquo;</a>
+      </div>
+
+      <div class="badges">
+        <a class="badge b1" href="index.html"><b>SCHWWAAA</b><span>&#9733; NOW! &#9733;</span></a>
+        <span class="badge b2"><span>best viewed at</span><b>800 × 600</b></span>
+        <span class="badge b3"><b>Y2K</b><span>COMPLIANT (MOSTLY)</span></span>
+        <a class="badge b4" href="https://videobeaux.online"><b>VIDEOBEAUX</b><span>POWERED</span></a>
+        <span class="badge b5"><b>FLAT</b><span>DESIGN CERTIFIED</span></span>
+        <a class="badge b6" href="construction.html?p=Guestbook"><b>GUESTBOOK</b><span>sign it!</span></a>
+      </div>
+
+      <p class="excellent">BE EXCELLENT TO EACH OTHER.</p>
+      <nav class="footnav" aria-label="Footer">
+        <a href="#pressroom">Press Kit</a>
+        <a href="construction.html?p=Legal">Legal</a>
+        <a href="construction.html?p=Privacy">Privacy</a>
+        <a href="construction.html?p=Accessibility">Accessibility</a>
+      </nav>
+      <p class="fine">© 1999–2001 Schwwaaa, Inc. All rights reserved. Secured by paranoia. Built with caffeine. Hosted
+        in a basement.</p>
+      <p class="fine"><button id="sparkle-toggle" type="button">sparkles: ON</button></p>
+    </footer>
+  </div>
+
+  <script src="site-config.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

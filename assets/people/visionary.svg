@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -36 236 346" role="img" aria-label="A noodle-armed employee holding a TV high in the air"><title>A noodle-armed employee holding a TV high in the air</title><g transform="translate(0,4)">
+<ellipse cx="112" cy="300" rx="80" ry="10" fill="#333366" opacity=".15"/>
+<path d="M40 300 C20 230 60 200 70 150 C80 200 110 220 90 300 Z" fill="#99CC99"/>
+<path d="M100 196 C96 230 84 260 78 290" fill="none" stroke="#333366" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M122 196 C130 232 146 262 150 290" fill="none" stroke="#333366" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M58 292 Q78 282 96 292 L96 300 L58 300 Z" fill="#FF6666"/>
+<path d="M136 292 Q156 282 172 294 L172 300 L136 300 Z" fill="#FF6666"/>
+<path d="M92 112 Q112 100 134 112 L146 204 Q112 214 80 204 Z" fill="#FFCC33"/>
+<path d="M98 120 C70 140 66 166 88 178" fill="none" stroke="#6666FF" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M128 118 C172 112 190 78 176 40" fill="none" stroke="#6666FF" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M128 118 C150 116 160 108 164 100" fill="none" stroke="#FFCC33" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="106" y="94" width="12" height="14" fill="#6666FF"/>
+<circle cx="112" cy="86" r="13" fill="#6666FF"/>
+<path d="M99 84 Q100 66 116 68 Q130 70 126 86 Q120 76 108 80 Z" fill="#333366"/>
+<g transform="rotate(-8 176 22)">
+  <rect x="140" y="-6" width="74" height="54" rx="10" fill="#FF6666"/>
+  <rect x="148" y="2" width="46" height="38" rx="8" fill="#333366"/>
+  <rect x="152" y="6" width="38" height="30" rx="6" fill="#33CCCC"/>
+  <path d="M156 28 L166 16 L174 24 L180 14 L186 28 Z" fill="#FFFFFF" opacity=".8"/>
+  <circle cx="203" cy="12" r="4" fill="#FFCC33"/><circle cx="203" cy="26" r="4" fill="#FFCC33"/>
+  <path d="M164 -6 L154 -22" fill="none" stroke="#333366" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M180 -6 L192 -22" fill="none" stroke="#333366" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<circle cx="174" cy="44" r="7" fill="#6666FF"/>
+</g></svg>

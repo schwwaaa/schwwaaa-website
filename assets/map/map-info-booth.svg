@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 72" width="96" height="72" role="img" aria-label="map info booth">
+  <defs>
+    <filter id="px" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="3" dy="3" stdDeviation="0" flood-color="#6b6458" flood-opacity=".8"/></filter>
+  </defs>
+  <g filter="url(#px)"><path d="M36 15h28v40H30V25z" fill="#fff8c8" stroke="#000" stroke-width="4"/><path d="M36 15h28v12H36z" fill="#f1d65a" stroke="#000" stroke-width="4"/><circle cx="60" cy="14" r="10" fill="#fff" stroke="#000" stroke-width="4"/><text x="60" y="19" font-family="Georgia" font-size="15" font-weight="900" text-anchor="middle">i</text></g>
+</svg>

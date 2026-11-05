@@ -1,0 +1,1087 @@
+/* ==========================================================================
+   SCHWWAAA ONLINE — 1999 portal × CORPORATE MEMPHIS
+   "Corporate Dreams Since 1999", now with 400% more synergy.
+
+   THE FUSION, IN ONE PARAGRAPH
+   The bones are 1999: an 800×600 fixed-width page, a real <table> layout,
+   tabbed nav, a channel strip, webring, 88×31 badges, a fake Flash intro.
+   The skin is Corporate Memphis (the flat "big-tech illustration" style
+   Facebook popularized in 2017): flat color with no gradients or shading,
+   noodle-limbed people, confetti shapes borrowed from the 1980s Memphis
+   Group, blobby asymmetric corners, hard offset shadows.
+   The twist: every color still obeys the 1999 "web-safe" 216-color rule.
+
+   Each section below has a 1999 NOTE (the old-web idea it keeps) and a
+   MEMPHIS NOTE (how the flat style reshapes it).
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. PALETTE
+   1999 NOTE: web-safe = every hex pair is 00, 33, 66, 99, CC or FF.
+   MEMPHIS NOTE: Corporate Memphis lives on soft periwinkle, coral, mustard,
+   teal and lavender, with a navy "ink" instead of pure black. All of those
+   happen to exist in the web-safe set, so the two styles fit together.
+   -------------------------------------------------------------------------- */
+:root {
+  color-scheme: light;
+  --ink:    #333366;   /* navy replaces black: softer, "friendlier", very Memphis */
+  --paper:  #FFFFFF;
+  --cream:  #FFFFCC;
+  --peach:  #FFCCCC;
+  --ice:    #CCFFFF;
+  --peri:   #6666FF;
+  --peri-l: #CCCCFF;
+  --coral:  #FF6666;
+  --must:   #FFCC33;
+  --teal:   #33CCCC;
+  --lav:    #CC99FF;
+  --pink:   #FF99CC;
+  --mint:   #99CC99;
+  --orng:   #FF9933;
+
+  /* 1999 NOTE: only the "core fonts" that shipped with Windows/Mac.
+     MEMPHIS NOTE: the style wants round, friendly geometric sans. Arial
+     Rounded (on every Mac) and Trebuchet (on every Windows) are the closest
+     pre-installed match, so there are still zero web fonts. */
+  --f-body: Verdana, Geneva, Tahoma, sans-serif;
+  --f-head: "Arial Rounded MT Bold", "Trebuchet MS", "Arial Black", sans-serif;
+  --f-loud: "Arial Rounded MT Bold", "Arial Black", Impact, sans-serif;
+  --f-mono: "Courier New", Courier, monospace;
+
+  /* MEMPHIS NOTE: the hard offset shadow. A drop shadow with zero blur
+     reads as a flat cut-paper shape, not a 3-D object. */
+  --sh: 5px 5px 0 var(--ink);
+  --blob: 26px 10px 26px 10px;   /* lopsided corners = "organic" blob boxes */
+
+  --page-w: 1000px;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. PAGE + CONFETTI TILE
+   1999 NOTE: a small tiled background image, repeated forever.
+   MEMPHIS NOTE: the tile is Memphis confetti (squiggle, triangle, ring,
+   dot grid, zigzag, half-circle). Same 1999 mechanism, 2017 motifs.
+   -------------------------------------------------------------------------- */
+* { box-sizing: border-box; }
+html { background: var(--cream); }
+/* Arial Rounded MT Bold is already a bold face: 'font-synthesis: none' stops
+   the browser from faking it even bolder, while Trebuchet (the Windows
+   fallback) still gets its real bold. */
+body { font-synthesis: none; }
+body {
+  margin: 0;
+  padding: 14px 0 30px;
+  background: var(--cream) url("assets/tile-home.png") repeat;
+  color: var(--ink);
+  font: 12px/1.5 var(--f-body);
+}
+body.catalog { background: var(--peach) url("assets/tile-catalog.png") repeat; }
+body.build   { background: var(--ice)   url("assets/tile-build.png")   repeat; }
+
+a { color: var(--peri); font-weight: bold; }
+a:visited { color: #9933CC; }
+a:hover { color: var(--coral); }
+img { border: 0; }
+
+.skip-link { position: absolute; left: -999px; top: 0; background: var(--must); padding: 6px 10px; z-index: 99; font-weight: bold; }
+.skip-link:focus { left: 8px; }
+
+.page {
+  width: min(var(--page-w), calc(100% - 32px));
+  margin: 0 auto;
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  border-radius: 20px;
+  box-shadow: 10px 10px 0 var(--coral);
+  overflow: hidden;   /* clip the rounded corners */
+}
+
+
+/* --------------------------------------------------------------------------
+   3. MASTHEAD — logo on a blob, held up by "the visionary"
+   1999 NOTE: one big sliced Photoshop banner.
+   MEMPHIS NOTE: the hero illustration. Every 2018 SaaS homepage had a
+   noodle-armed person next to the headline, usually holding a laptop. Ours
+   holds a TV, because the work is video.
+   -------------------------------------------------------------------------- */
+.masthead {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 190px;
+  padding: 12px 14px 0;
+  background: var(--peri-l);
+  border-bottom: 3px solid var(--ink);
+  overflow: hidden;
+}
+.masthead .deco { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.splat {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 360px;
+  height: 160px;
+  margin-bottom: 14px;
+}
+.splat svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.splat img {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 290px;
+  transform: translate(-50%, -52%) rotate(-5deg);
+  filter: drop-shadow(4px 4px 0 var(--ink));
+}
+.splat:hover img { animation: boing .6s ease-in-out; }
+@keyframes boing { 30% { transform: translate(-50%, -60%) rotate(-2deg) scale(1.06); } 60% { transform: translate(-50%, -50%) rotate(-7deg) scale(.97); } }
+
+.visionary {
+  position: relative; z-index: 1;
+  width: 150px;
+  margin: 0 0 -3px -10px;
+  align-self: flex-end;
+}
+.visionary img { display: block; width: 100%; }
+.visionary:hover img { animation: sway 1s ease-in-out infinite alternate; transform-origin: bottom center; }
+@keyframes sway { from { transform: rotate(-3deg); } to { transform: rotate(3deg); } }
+
+.bubble {
+  position: absolute;
+  z-index: 2;
+  left: 476px; top: 14px;
+  padding: 6px 12px;
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  border-radius: 18px;
+  font: bold 14px var(--f-head);
+  white-space: nowrap;
+  box-shadow: 3px 3px 0 var(--ink);
+  transform: rotate(3deg);
+}
+.bubble::after {   /* speech-bubble tail */
+  content: ""; position: absolute; left: 24px; bottom: -14px;
+  border: 7px solid transparent; border-top: 8px solid var(--ink);
+}
+.bubble .blink { color: var(--coral); animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+.mast-side { position: relative; z-index: 1; flex: 1; text-align: right; align-self: center; margin-top: 50px; }
+.tagline { display: none; }   /* tagline now lives in the speech bubble */
+
+/* Pill search. 1999 NOTE: SEARCH: [____] GO.  MEMPHIS NOTE: flat pill. */
+.search {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 5px 5px 12px;
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--ink);
+  font: bold 12px var(--f-head);
+}
+.search input { width: 110px; border: 0; border-bottom: 2px dashed var(--lav); font: 12px var(--f-body); color: var(--ink); background: transparent; outline-offset: 3px; }
+.go-btn, .bevel {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--must);
+  color: var(--ink) !important;
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  font: bold 12px var(--f-head);
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+.go-btn:active, .bevel:active { transform: translate(2px, 2px); box-shadow: none; }
+.go-btn.round { background: var(--coral); color: var(--paper) !important; width: 34px; height: 34px; padding: 0; }
+
+.mast-links { margin-top: 8px; }
+.mast-links a { display: inline-block; margin-left: 4px; padding: 2px 9px; font: bold 10px var(--f-head); text-decoration: none; color: var(--ink); background: var(--paper); border: 2px solid var(--ink); border-radius: 999px; }
+.mast-links a:hover { background: var(--teal); }
+
+
+/* --------------------------------------------------------------------------
+   4. TABS
+   1999 NOTE: chunky tilted tab GIFs with rollover images.
+   MEMPHIS NOTE: flat pills, each with its own Memphis pattern (dots,
+   stripes, checks, zigzag) drawn with repeating CSS gradients, not images.
+   -------------------------------------------------------------------------- */
+.tabs {
+  display: flex; justify-content: center; gap: 10px;
+  padding: 12px 8px 12px;
+  background: var(--ink);
+}
+.tabs a {
+  --c: var(--teal); --p: none;
+  position: relative;
+  display: block;
+  padding: 6px 16px;
+  background: var(--p), var(--c);
+  border: 3px solid var(--paper);
+  border-radius: 999px;
+  color: var(--ink);
+  font: bold 15px var(--f-head);
+  text-decoration: none;
+  text-transform: lowercase;
+  box-shadow: 3px 3px 0 #000033;
+  transform: rotate(var(--r, -2deg));
+  transition: transform .15s;
+}
+/* Memphis patterns, made from gradients. A repeating-linear-gradient with
+   hard color stops = stripes. A radial-gradient on a small background-size
+   = polka dots. */
+.tabs a:nth-child(1) { --c: var(--teal);  --r: -3deg; --p: radial-gradient(circle, rgba(255,255,255,.55) 2px, transparent 2.5px) 0 0 / 9px 9px; }
+.tabs a:nth-child(2) { --c: var(--coral); --r:  2deg; --p: repeating-linear-gradient(45deg, rgba(255,255,255,.35) 0 4px, transparent 4px 10px); color: var(--paper); }
+.tabs a:nth-child(3) { --c: var(--must);  --r: -1deg; --p: repeating-linear-gradient(90deg, rgba(51,51,102,.12) 0 3px, transparent 3px 9px); }
+.tabs a:nth-child(4) { --c: var(--lav);   --r:  3deg; --p: radial-gradient(circle, rgba(51,51,102,.25) 1.5px, transparent 2px) 0 0 / 7px 7px; }
+.tabs a:nth-child(5) { --c: var(--mint);  --r: -2deg; --p: repeating-linear-gradient(-45deg, rgba(255,255,255,.4) 0 3px, transparent 3px 8px); }
+.tabs a:hover, .tabs a:focus-visible { transform: rotate(0) translateY(-3px) scale(1.06); }
+.tabs a[aria-current="page"] { outline: 3px dashed var(--must); outline-offset: 3px; transform: rotate(0); }
+
+
+/* --------------------------------------------------------------------------
+   5. CHANNEL STRIP
+   1999 NOTE: <marquee>-style scrolling row.
+   MEMPHIS NOTE: icons sit in rounded "app icon" squares with hard shadows.
+   The scroll is still a CSS keyframe sliding two copies of the row by 50%.
+   -------------------------------------------------------------------------- */
+.channel-strip { display: flex; align-items: center; gap: 6px; padding: 8px 8px 10px; background: var(--peri); border-bottom: 3px solid var(--ink); font: bold 12px var(--f-head); }
+.channel-strip .lbl { padding: 4px 10px; background: var(--must); border: 2px solid var(--ink); border-radius: 999px; white-space: nowrap; transform: rotate(-3deg); }
+.reel-arrow { width: 28px; height: 28px; padding: 0; background: var(--paper); color: var(--ink); border: 2px solid var(--ink); border-radius: 50%; font-size: 11px; cursor: pointer; box-shadow: 2px 2px 0 var(--ink); }
+.reel-arrow:hover { background: var(--coral); color: var(--paper); }
+.reel { flex: 1; overflow: hidden; padding: 2px 0 4px; }
+.reel-track { display: flex; gap: 8px; width: max-content; animation: reel 40s linear infinite; }
+.reel:hover .reel-track, .reel:focus-within .reel-track { animation-play-state: paused; }
+.reel.rev .reel-track { animation-direction: reverse; }
+@keyframes reel { to { transform: translateX(-50%); } }
+.reel-track a { display: flex; align-items: center; justify-content: center; width: 46px; height: 46px; background: var(--paper); border: 2px solid var(--ink); border-radius: 12px; box-shadow: 2px 2px 0 var(--ink); }
+.reel-track a:nth-child(3n+1) { background: var(--cream); }
+.reel-track a:nth-child(3n+2) { background: var(--ice); }
+.reel-track a:nth-child(3n)   { background: var(--peach); }
+.reel-track a:hover { transform: translateY(-3px) rotate(-6deg); }
+.reel-track img { max-width: 34px; max-height: 32px; }
+.channel-strip .all { padding: 4px 10px; color: var(--ink); background: var(--paper); border: 2px solid var(--ink); border-radius: 999px; text-decoration: none; white-space: nowrap; font-size: 11px; }
+.channel-strip .all:hover { background: var(--teal); }
+
+
+/* --------------------------------------------------------------------------
+   6. LAYOUT TABLE (same idea as the 1999 version)
+   A real <table role="presentation">; on phones the cells become blocks.
+   -------------------------------------------------------------------------- */
+table.layout { width: 100%; border-collapse: collapse; table-layout: fixed; }
+table.layout > tbody > tr > td { vertical-align: top; padding: 0; }
+.col-left  { width: 178px; background: var(--peri-l); border-right: 3px solid var(--ink); }
+.col-main  { padding: 18px 12px 10px !important; }
+.col-right { width: 216px; padding: 18px 12px 10px 0 !important; }
+
+
+/* --------------------------------------------------------------------------
+   7. LEFT RAIL
+   1999 NOTE: Neopets-style column of clip-art icons.
+   MEMPHIS NOTE: each icon sits on a flat colored circle, and the hover is a
+   friendly bounce instead of a blink.
+   -------------------------------------------------------------------------- */
+.rail-title {
+  margin: 12px 10px 4px;
+  padding: 4px 8px;
+  background: var(--ink);
+  color: var(--must);
+  border-radius: 999px;
+  font: bold 12px var(--f-head);
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: lowercase;
+}
+.campus { list-style: none; margin: 0; padding: 4px 8px; }
+.campus a { display: flex; align-items: center; gap: 8px; padding: 4px; border-radius: 14px; color: var(--ink); text-decoration: none; font: bold 13px/1.1 var(--f-head); }
+.campus a:hover, .campus a:focus-visible { background: var(--paper); }
+.campus .dot { flex: 0 0 38px; width: 38px; height: 38px; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 50%; background: var(--must); }
+.campus li:nth-child(5n+2) .dot { background: var(--coral); }
+.campus li:nth-child(5n+3) .dot { background: var(--teal); }
+.campus li:nth-child(5n+4) .dot { background: var(--pink); }
+.campus li:nth-child(5n+5) .dot { background: var(--mint); }
+.campus img { width: 26px; height: 26px; }
+.campus a:hover .dot { animation: hop .5s ease-in-out infinite alternate; }
+.campus small { display: block; font: 9px var(--f-body); color: #666699; }
+@keyframes hop { to { transform: translateY(-4px) rotate(-8deg); } }
+
+.rail-box { margin: 10px 8px; padding: 9px 8px; background: var(--paper); border: 3px solid var(--ink); border-radius: var(--blob); text-align: center; box-shadow: 3px 3px 0 var(--ink); }
+.rail-box h3 { margin: 0 0 5px; font: bold 11px var(--f-head); text-transform: lowercase; }
+.citizen b { display: block; font: bold 18px var(--f-loud); color: var(--coral); }
+.citizen .bevel { margin-top: 6px; background: var(--teal); font-size: 11px; }
+.odometer { display: inline-flex; gap: 2px; margin: 2px 0; }
+.odometer span { width: 15px; height: 22px; background: var(--ink); color: var(--must); border-radius: 4px; font: bold 15px/22px var(--f-mono); text-align: center; }
+.odometer span:nth-child(odd) { background: var(--peri); color: var(--paper); }
+.rail-box p.fine { margin: 3px 0 0; font-size: 9px; color: #666699; }
+.panic {
+  display: block; width: 100%;
+  padding: 10px 4px;
+  background: var(--coral);
+  color: var(--paper);
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  font: bold 14px var(--f-head);
+  box-shadow: 3px 3px 0 var(--ink);
+  cursor: pointer;
+}
+.panic:hover { background: #FF3333; }
+.panic:active { transform: translate(3px, 3px); box-shadow: none; }
+
+
+/* --------------------------------------------------------------------------
+   8. CONTENT BOXES
+   1999 NOTE: a box with a gradient title-bar GIF.
+   MEMPHIS NOTE: the title becomes a tilted pill "sticker" sitting on the
+   box's top edge; the box gets a hard colored shadow.
+   -------------------------------------------------------------------------- */
+.box {
+  --s: var(--teal);
+  position: relative;
+  margin: 0 0 24px;
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  border-radius: var(--blob);
+  box-shadow: 6px 6px 0 var(--s);
+}
+.box > h2 {
+  position: relative;
+  display: inline-flex; align-items: center; gap: 6px;
+  margin: -16px 0 0 14px;
+  padding: 3px 14px;
+  background: var(--s);
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  font: bold 14px var(--f-head);
+  text-transform: lowercase;
+  transform: rotate(-2deg);
+}
+.box > h2 .ico { color: var(--paper); }
+.box > h2 a { margin-left: 6px; padding: 0 8px; background: var(--paper); border: 2px solid var(--ink); border-radius: 999px; font: bold 10px var(--f-head); color: var(--ink); text-decoration: none; }
+.box-body { padding: 10px 14px 12px; }
+#services { --s: var(--must); }
+#projects { --s: var(--lav); }
+
+/* WELCOME — big friendly headline + the floppy-disk sitter */
+.welcome { --s: var(--coral); overflow: visible; }
+.welcome .box-body { display: flex; gap: 8px; align-items: flex-end; padding-bottom: 6px; }
+.welcome h1 {
+  margin: 0 0 4px;
+  font: bold 34px/1 var(--f-loud);
+  color: var(--ink);
+  letter-spacing: -.5px;
+}
+.welcome h1 .swoosh {   /* the "highlighter swoosh" under a word */
+  background: linear-gradient(transparent 58%, var(--must) 58% 90%, transparent 90%);
+  padding: 0 4px;
+}
+.welcome p { margin: 4px 0; font-size: 13px; }
+.welcome .sitter { flex: 0 0 150px; width: 150px; margin: -34px -4px 0 0; }
+.rainbow span { display: inline-block; }
+
+
+/* --------------------------------------------------------------------------
+   9. ON THE AIR — flat TV
+   MEMPHIS NOTE: no wood grain, no gradients: a flat coral cabinet with
+   circle knobs. The scanlines stay because the work is video.
+   -------------------------------------------------------------------------- */
+.onair { position: relative; margin: 0 0 26px; padding: 12px; background: var(--coral); border: 3px solid var(--ink); border-radius: 28px; box-shadow: 6px 6px 0 var(--ink); }
+.onair::before, .onair::after {   /* rabbit-ear antennas */
+  content: ""; position: absolute; top: -26px; width: 4px; height: 30px; background: var(--ink); border-radius: 2px;
+}
+.onair::before { left: 44%; transform: rotate(-24deg); }
+.onair::after  { left: 54%; transform: rotate(24deg); }
+.onair .screen { position: relative; min-height: 150px; border: 3px solid var(--ink); border-radius: 20px; background: var(--ink); overflow: hidden; }
+.onair .screen::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(51,51,102,.18) 0 1px, transparent 1px 3px);
+}
+.slide { display: none; align-items: center; gap: 14px; min-height: 150px; padding: 12px 16px; background: var(--slide-bg, var(--peri)); color: var(--ink); position: relative; overflow: hidden; }
+.slide::before {   /* big blob behind the icon */
+  content: ""; position: absolute; left: -10px; top: 8px; width: 150px; height: 140px;
+  background: var(--blob-c, rgba(255,255,255,.55));
+  border-radius: 58% 42% 55% 45% / 48% 60% 40% 52%;
+}
+.slide.on { display: flex; animation: tuneIn .4s ease-out; }
+@keyframes tuneIn { 0% { transform: scaleY(.04); filter: brightness(3); } 60% { transform: scaleY(1.05); } 100% { transform: none; filter: none; } }
+.slide img { position: relative; width: 104px; height: 104px; object-fit: contain; flex: 0 0 104px; }
+.slide > div { position: relative; }
+.slide .kicker { display: inline-block; padding: 1px 8px; background: var(--ink); color: var(--must); border-radius: 999px; font: bold 9px var(--f-mono); letter-spacing: 1px; }
+.slide h3 { margin: 4px 0; font: bold 28px/1 var(--f-loud); letter-spacing: -.5px; }
+.slide p { margin: 0 0 8px; font-size: 12px; }
+.play-btn {
+  display: inline-block;
+  padding: 5px 14px;
+  background: var(--must);
+  color: var(--ink) !important;
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  font: bold 12px var(--f-head);
+  text-decoration: none;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.play-btn:hover { background: var(--teal); transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
+.onair .knobs { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; color: var(--ink); font: bold 11px var(--f-head); }
+.onair .knob { display: inline-block; width: 20px; height: 20px; margin-left: 4px; border-radius: 50%; background: var(--must); border: 3px solid var(--ink); vertical-align: middle; }
+.onair .knob + .knob { background: var(--teal); }
+.onair .dots { display: inline-flex; gap: 4px; }
+.onair .dots button { width: 14px; height: 14px; padding: 0; border-radius: 50%; border: 2px solid var(--ink); background: var(--paper); cursor: pointer; }
+.onair .dots button[aria-pressed="true"] { background: var(--must); transform: scale(1.2); }
+
+
+/* --------------------------------------------------------------------------
+   10. SERVICES
+   -------------------------------------------------------------------------- */
+.services { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 10px 12px 14px; }
+.services div { padding: 8px 4px; text-align: center; font: bold 11px/1.2 var(--f-head); text-transform: lowercase; }
+.services img { display: block; width: 54px; height: 54px; margin: 0 auto 6px; padding: 6px; border: 3px solid var(--ink); border-radius: 50%; background: var(--ice); }
+.services div:nth-child(2) img { background: var(--peach); border-radius: 30% 70% 50% 50%; }
+.services div:nth-child(3) img { background: var(--cream); border-radius: 12px; }
+.services div:nth-child(4) img { background: var(--peri-l); border-radius: 50% 50% 12px 12px; }
+.services .hand { position: absolute; width: 38px; right: -14px; bottom: -22px; transform: rotate(-30deg); animation: poke 1.4s ease-in-out infinite; pointer-events: none; }
+@keyframes poke { 50% { transform: rotate(-30deg) translate(-6px, -4px); } }
+
+
+/* --------------------------------------------------------------------------
+   11. PROJECT CARDS — trading cards in Memphis patterns
+   Each card's art panel gets a different pattern, cycling every 6 cards.
+   -------------------------------------------------------------------------- */
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 12px; }
+.card {
+  --c: var(--teal); --p: none;
+  position: relative;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 0 0 8px;
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  border-radius: 18px 6px 18px 6px;
+  box-shadow: 4px 4px 0 var(--ink);
+  color: var(--ink) !important;
+  text-align: center;
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform .15s;
+}
+.card:nth-child(6n+1) { --c: var(--teal);  --p: radial-gradient(circle, rgba(255,255,255,.6) 2px, transparent 2.5px) 0 0 / 10px 10px; }
+.card:nth-child(6n+2) { --c: var(--pink);  --p: repeating-linear-gradient(45deg, rgba(255,255,255,.45) 0 5px, transparent 5px 12px); }
+.card:nth-child(6n+3) { --c: var(--must);  --p: linear-gradient(135deg, rgba(51,51,102,.1) 25%, transparent 25%) 0 0 / 14px 14px; }
+.card:nth-child(6n+4) { --c: var(--lav);   --p: repeating-linear-gradient(90deg, rgba(255,255,255,.4) 0 4px, transparent 4px 12px); }
+.card:nth-child(6n+5) { --c: var(--mint);  --p: radial-gradient(circle, rgba(51,51,102,.2) 1.5px, transparent 2px) 0 0 / 8px 8px; }
+.card:nth-child(6n+6) { --c: var(--orng);  --p: repeating-linear-gradient(-45deg, rgba(255,255,255,.4) 0 3px, transparent 3px 9px); }
+.card:hover, .card:focus-visible { transform: translateY(-4px) rotate(-2deg); box-shadow: 6px 8px 0 var(--ink); z-index: 2; }
+.card:nth-child(even):hover { transform: translateY(-4px) rotate(2deg); }
+.card .ch { align-self: stretch; display: flex; justify-content: space-between; padding: 3px 8px; border-bottom: 3px solid var(--ink); font: bold 9px var(--f-mono); background: var(--paper); }
+.card .art { position: relative; display: grid; place-items: center; width: 100%; height: 84px; background: var(--p), var(--c); border-bottom: 3px solid var(--ink); }
+.card .art::before { content: ""; position: absolute; width: 64px; height: 64px; background: var(--paper); border: 2px solid var(--ink); border-radius: 46% 54% 60% 40% / 50% 44% 56% 50%; }
+.card .art img { position: relative; max-width: 50px; max-height: 50px; }
+.card b { margin-top: 6px; padding: 0 6px; font: bold 12px/1.15 var(--f-head); word-break: break-word; }
+.card i { font: italic 10px var(--f-body); padding: 2px 6px 0; color: #666699; }
+.card .go { margin-top: 5px; padding: 1px 10px; background: var(--cream); border: 2px solid var(--ink); border-radius: 999px; font: bold 10px var(--f-head); }
+.card.soon .go { background: var(--peach); }
+.sticker {
+  position: absolute; top: 22px; right: 4px; z-index: 1;
+  display: grid; place-items: center;
+  width: 42px; height: 42px;
+  background: var(--coral); color: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  font: bold 10px var(--f-head);
+  transform: rotate(14deg);
+  animation: wiggle 1.6s ease-in-out infinite;
+}
+.sticker.soon { background: var(--ink); color: var(--must); animation: none; }
+@keyframes wiggle { 50% { transform: rotate(-8deg) scale(1.08); } }
+
+
+/* --------------------------------------------------------------------------
+   12. RIGHT RAIL
+   -------------------------------------------------------------------------- */
+.sticky { position: relative; margin: 0 0 22px; padding: 12px; background: var(--must); border: 3px solid var(--ink); border-radius: 50% 50% 46% 54% / 18% 22% 20% 24%; transform: rotate(2deg); box-shadow: 4px 4px 0 var(--ink); text-align: center; }
+.sticky h2 { margin: 0 0 4px; font: bold 12px var(--f-head); text-transform: lowercase; }
+.sticky p { margin: 0; font: bold 17px/1.2 var(--f-loud); }
+.sticky small { display: block; margin-top: 6px; font-size: 10px; }
+
+.news { margin: 0 0 22px; background: var(--paper); border: 3px solid var(--ink); border-radius: var(--blob); overflow: hidden; box-shadow: 5px 5px 0 var(--teal); }
+.news h2 { margin: 0; padding: 6px 10px; background: var(--teal); border-bottom: 3px solid var(--ink); font: bold 15px var(--f-head); text-transform: lowercase; }
+.news h2 em { font-style: normal; color: var(--paper); }
+.news article { padding: 6px 10px; border-bottom: 2px dotted var(--lav); }
+.news time { display: inline-block; padding: 0 6px; background: var(--peri-l); border-radius: 999px; font: bold 9px var(--f-mono); }
+.news p { margin: 2px 0 0; font-size: 11px; }
+.news .more { display: block; padding: 5px 10px; font: bold 11px var(--f-head); }
+
+.ad { position: relative; margin: 0 0 22px; padding: 14px 10px 12px; text-align: center; background: var(--peri); color: var(--paper); border: 3px solid var(--ink); border-radius: 22px; box-shadow: 5px 5px 0 var(--ink); overflow: hidden; }
+.ad::before { content: "ad"; position: absolute; top: 6px; left: 8px; padding: 0 6px; background: var(--paper); color: var(--ink); border-radius: 999px; font: bold 9px var(--f-body); }
+.ad::after { content: ""; position: absolute; left: -34px; bottom: -34px; width: 90px; height: 90px; border-radius: 50%; background: var(--lav); z-index: 0; }
+.ad > * { position: relative; z-index: 1; }
+.ad .eyebrow { font: bold 10px var(--f-head); color: var(--must); letter-spacing: 1px; }
+.ad strong { display: block; margin: 4px 0; font: bold 25px/0.95 var(--f-loud); color: var(--paper); text-shadow: 3px 3px 0 var(--ink); }
+.ad img { display: block; width: 72px; margin: 6px auto; padding: 6px; background: var(--paper); border: 3px solid var(--ink); border-radius: 50%; animation: hop 1.4s ease-in-out infinite alternate; }
+.ad .flash { display: block; font: bold 14px var(--f-head); color: var(--must); }
+.ad a.play-btn { margin-top: 8px; }
+
+.poll { margin: 0 0 22px; padding: 10px; background: var(--paper); border: 3px solid var(--ink); border-radius: var(--blob); box-shadow: 5px 5px 0 var(--pink); }
+.poll h2 { margin: 0 0 4px; font: bold 15px var(--f-head); color: var(--coral); text-transform: lowercase; }
+.poll p { margin: 0 0 4px; font: bold 11px var(--f-head); }
+.poll label { display: block; font-size: 11px; cursor: pointer; }
+.poll input { accent-color: var(--peri); }
+.poll .bevel { margin-top: 6px; }
+.poll output { display: block; margin-top: 6px; font: bold 11px var(--f-head); color: var(--peri); }
+
+.soonbox { margin: 0 0 22px; padding: 10px; background: var(--ice); border: 3px dashed var(--ink); border-radius: 16px; text-align: center; }
+.soonbox img { width: 130px; display: block; margin: 0 auto 4px; }
+.soonbox h2 { margin: 0 0 4px; font: bold 12px var(--f-head); text-transform: lowercase; }
+.soonbox ul { list-style: none; margin: 0; padding: 0; font-size: 11px; }
+.soonbox li { display: inline-block; margin: 2px; }
+.soonbox li a { display: inline-block; padding: 1px 8px; background: var(--paper); border: 2px solid var(--ink); border-radius: 999px; font: bold 10px var(--f-head); color: var(--ink); text-decoration: none; }
+.soonbox li a:hover { background: var(--must); }
+
+/* Flat CRT with color bars + the office plant beside it */
+.crt { position: relative; text-align: center; margin-bottom: 12px; }
+.crt .tube { width: 150px; height: 110px; margin: 0 auto; padding: 10px; background: var(--peach); border: 3px solid var(--ink); border-radius: 18px; }
+.crt .glass { height: 100%; border: 3px solid var(--ink); border-radius: 12px; position: relative; overflow: hidden;
+  background: linear-gradient(90deg, #CCCCCC 0 14.28%, #FFCC33 0 28.57%, #33CCCC 0 42.85%, #99CC99 0 57.14%, #CC99FF 0 71.42%, #FF6666 0 85.71%, #6666FF 0); }
+.crt .glass::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(51,51,102,.18) 0 1px, transparent 1px 3px); }
+.crt .stand { width: 40px; height: 14px; margin: 0 auto; background: var(--ink); border-radius: 0 0 8px 8px; }
+.crt p { margin: 8px 0 0; font: bold 15px/1.1 var(--f-loud); }
+.crt .plant { position: absolute; left: -16px; bottom: 34px; width: 52px; }
+
+
+/* --------------------------------------------------------------------------
+   13. FOOTER
+   MEMPHIS NOTE: the "community" illustration (people high-fiving) was the
+   most-used Corporate Memphis image of all. It crowns the webring here.
+   -------------------------------------------------------------------------- */
+.footer { position: relative; padding: 0 12px 14px; background: var(--ink); color: var(--paper); text-align: center; border-top: 3px solid var(--ink); }
+.footer .highfive { display: block; width: 230px; margin: -6px auto -4px; background: var(--cream); border: 3px solid var(--ink); border-top: 0; border-radius: 0 0 120px 120px; padding: 4px 20px 0; }
+.webring { display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px; margin-top: 12px; padding: 5px 14px; background: var(--paper); color: var(--ink); border: 3px solid var(--must); border-radius: 999px; font: bold 11px var(--f-head); }
+.webring a { color: var(--peri); }
+.webring .ringname { color: var(--coral); }
+
+.badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 12px 0; }
+.badge { display: flex; flex-direction: column; justify-content: center; width: 88px; height: 31px; overflow: hidden; border: 2px solid var(--paper); border-radius: 6px; font: 7px/1 var(--f-body); color: var(--ink) !important; text-align: center; text-decoration: none; }
+.badge b { font: bold 10px/1.05 var(--f-head); }
+.b1 { background: var(--must); }
+.b2 { background: var(--paper); }
+.b3 { background: var(--mint); }
+.b4 { background: linear-gradient(90deg, #CCCCCC 0 14%, #FFCC33 0 28%, #33CCCC 0 42%, #99CC99 0 56%, #CC99FF 0 70%, #FF6666 0 84%, #6666FF 0); }
+.b4 b, .b4 span { background: var(--paper); padding: 0 3px; align-self: center; border-radius: 3px; }
+.b5 { background: var(--lav); font-family: var(--f-mono); }
+.b6 { background: var(--coral); color: var(--paper) !important; }
+
+.excellent { margin: 6px 0; font: bold 22px var(--f-loud); color: var(--must); letter-spacing: .5px; }
+.footnav a { margin: 0 5px; color: var(--teal); font: bold 11px var(--f-head); }
+.fine { margin: 6px 0 0; font-size: 10px; color: var(--peri-l); }
+.fine button { padding: 1px 8px; background: none; color: var(--must); border: 2px solid var(--must); border-radius: 999px; font: bold 10px var(--f-head); cursor: pointer; }
+hr.rainbow-rule { display: none; }
+
+
+/* --------------------------------------------------------------------------
+   14. FAKE FLASH INTRO, Memphis edition
+   1999 NOTE: "LOADING… SKIP INTRO".
+   MEMPHIS NOTE: confetti shapes tumble in and the loading messages are
+   corporate jargon.
+   -------------------------------------------------------------------------- */
+.intro { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--cream) url("assets/tile-home.png"); color: var(--ink); font: 12px var(--f-mono); }
+.intro[hidden] { display: none; }
+.intro .stage { position: relative; width: min(440px, 88vw); padding: 26px 22px; text-align: center; background: var(--paper); border: 3px solid var(--ink); border-radius: 30px; box-shadow: 10px 10px 0 var(--coral); }
+.intro .logo { width: 100%; filter: drop-shadow(4px 4px 0 var(--ink)); opacity: 0; transform: scale(.3) rotate(-20deg); transition: all .7s cubic-bezier(.2, 1.6, .4, 1); position: relative; z-index: 1; }
+.intro.loaded .logo { opacity: 1; transform: scale(1) rotate(-4deg); }
+.intro .bar { position: relative; z-index: 1; height: 22px; margin: 18px 0 8px; border: 3px solid var(--ink); border-radius: 999px; padding: 3px; background: var(--paper); }
+.intro .bar i { display: block; height: 100%; width: 0; border-radius: 999px; background: repeating-linear-gradient(45deg, var(--peri) 0 8px, var(--teal) 8px 16px); }
+.intro .pct { position: relative; z-index: 1; margin: 0; font: bold 11px var(--f-mono); }
+.intro .enter { position: relative; z-index: 1; margin-top: 16px; padding: 8px 28px; font: bold 22px var(--f-loud); background: var(--must); color: var(--ink); border: 3px solid var(--ink); border-radius: 999px; box-shadow: 4px 4px 0 var(--ink); cursor: pointer; visibility: hidden; }
+.intro.loaded .enter { visibility: visible; animation: wiggle .5s ease-in-out 3; }
+.intro .skip { position: absolute; right: 16px; bottom: 16px; padding: 5px 12px; background: var(--paper); color: var(--ink); border: 2px solid var(--ink); border-radius: 999px; font: bold 11px var(--f-head); cursor: pointer; }
+.intro .streaks { position: absolute; inset: -60px; z-index: 0; pointer-events: none; overflow: visible; }
+.intro .streaks > * { opacity: 0; transform-box: fill-box; transform-origin: center; }
+.intro.loaded .streaks > * { animation: tumble 4s ease-in-out infinite; opacity: 1; }
+.intro.loaded .streaks > *:nth-child(2) { animation-delay: -1s; }
+.intro.loaded .streaks > *:nth-child(3) { animation-delay: -2s; }
+.intro.loaded .streaks > *:nth-child(4) { animation-delay: -3s; }
+@keyframes tumble { 50% { transform: translateY(-14px) rotate(160deg); } }
+
+
+/* --------------------------------------------------------------------------
+   15. DO NOT PRESS — "brand guidelines violated"
+   The Memphis veneer peels away: the page drops into grayscale 1999-style
+   chaos for 1.6 s, as if the flat friendly surface were a costume.
+   -------------------------------------------------------------------------- */
+.nosignal { position: fixed; inset: 0; z-index: 900; display: none; align-items: center; justify-content: center; pointer-events: none;
+  background: linear-gradient(90deg, #C0C0C0 0 14.28%, #C0C000 0 28.57%, #00C0C0 0 42.85%, #00C000 0 57.14%, #C000C0 0 71.42%, #C00000 0 85.71%, #0000C0 0); }
+.nosignal span { padding: 10px 18px; background: #000; color: #FFF; font: 24px var(--f-mono); letter-spacing: 2px; }
+body.glitch .nosignal { display: flex; animation: flick .12s steps(2) infinite; }
+body.glitch .page { animation: tracking .18s steps(3) infinite; }
+@keyframes flick { 50% { opacity: .5; transform: translateX(6px); } }
+@keyframes tracking {
+  0%   { transform: none; filter: none; }
+  33%  { transform: translate(-12px, 4px) skewX(8deg); filter: grayscale(1) contrast(3); }
+  66%  { transform: translate(10px, -6px) skewX(-6deg); filter: invert(1) hue-rotate(90deg); }
+  100% { transform: none; }
+}
+
+/* Confetti cursor trail (shapes, not stars) */
+.sparkle { position: fixed; z-index: 2000; pointer-events: none; font-size: 13px; line-height: 1; animation: sparkle .8s ease-out forwards; }
+@keyframes sparkle { to { transform: translateY(22px) rotate(220deg) scale(.3); opacity: 0; } }
+
+
+/* --------------------------------------------------------------------------
+   16. CATALOG PAGE
+   -------------------------------------------------------------------------- */
+.dir { list-style: none; margin: 0; padding: 4px 8px; }
+.dir a { display: flex; align-items: center; gap: 6px; padding: 3px 6px; border-radius: 999px; color: var(--ink); text-decoration: none; font: bold 11px var(--f-head); }
+.dir a:hover { background: var(--paper); }
+.dir img { width: 24px; height: 24px; padding: 2px; object-fit: contain; background: var(--paper); border: 2px solid var(--ink); border-radius: 50%; }
+
+.registry { --s: var(--coral); }
+.registry h1 { margin: 0 0 6px; font: bold 26px/1.05 var(--f-loud); letter-spacing: -.5px; }
+.registry h1 span { background: linear-gradient(transparent 58%, var(--must) 58% 90%, transparent 90%); }
+.registry .illus { float: right; width: 140px; margin: -30px -6px 0 8px; }
+.stats { display: flex; gap: 8px; margin: 10px 0 2px; clear: both; }
+.stats span { flex: 1; padding: 6px 4px; text-align: center; border: 3px solid var(--ink); border-radius: 16px; font: bold 10px var(--f-head); }
+.stats span:nth-child(1) { background: var(--teal); }
+.stats span:nth-child(2) { background: var(--must); }
+.stats span:nth-child(3) { background: var(--lav); }
+.stats b { display: block; font: bold 22px/1 var(--f-loud); }
+.filter-row { display: flex; gap: 6px; align-items: center; margin: 10px 0 0; padding: 4px 4px 4px 12px; border: 3px solid var(--ink); border-radius: 999px; font: bold 12px var(--f-head); }
+.filter-row input { flex: 1; border: 0; font: 12px var(--f-body); color: var(--ink); padding: 4px; outline-offset: 2px; border-radius: 999px; }
+.nomatch { padding: 10px; font: bold 14px var(--f-head); color: var(--coral); }
+
+.detail { --c: var(--teal); position: relative; margin: 0 0 18px; background: var(--paper); border: 3px solid var(--ink); border-radius: 22px 8px 22px 8px; box-shadow: 5px 5px 0 var(--ink); overflow: hidden; scroll-margin-top: 10px; }
+.detail:nth-of-type(6n+1) { --c: var(--teal); }
+.detail:nth-of-type(6n+2) { --c: var(--pink); }
+.detail:nth-of-type(6n+3) { --c: var(--must); }
+.detail:nth-of-type(6n+4) { --c: var(--lav); }
+.detail:nth-of-type(6n+5) { --c: var(--mint); }
+.detail:nth-of-type(6n+6) { --c: var(--orng); }
+.detail:target { box-shadow: 5px 5px 0 var(--ink), 0 0 0 6px var(--must); }
+.detail header { display: flex; align-items: center; gap: 12px; padding: 8px 12px; background: radial-gradient(circle, rgba(255,255,255,.5) 2px, transparent 2.5px) 0 0 / 10px 10px, var(--c); border-bottom: 3px solid var(--ink); }
+.detail header img { width: 58px; height: 58px; object-fit: contain; padding: 6px; background: var(--paper); border: 3px solid var(--ink); border-radius: 46% 54% 60% 40% / 50% 44% 56% 50%; }
+.detail h2 { margin: 0; font: bold 21px/1 var(--f-loud); letter-spacing: -.3px; }
+.detail .chan { font: bold 10px var(--f-mono); }
+.detail .status { margin-left: auto; padding: 2px 10px; background: var(--paper); border: 2px solid var(--ink); border-radius: 999px; font: bold 10px var(--f-head); text-transform: lowercase; white-space: nowrap; }
+.detail .status::before { content: "● "; color: var(--coral); animation: blink 1.2s steps(1) infinite; }
+.detail .body { padding: 10px 14px 4px; }
+.detail .body p { margin: 0 0 6px; font-size: 12px; }
+.detail ul { margin: 0 0 6px; padding-left: 18px; font-size: 11px; }
+.detail ul li::marker { content: "▲ "; color: var(--coral); font-size: 9px; }
+.detail footer { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; padding: 6px 14px 12px; }
+.detail footer .tag { padding: 1px 8px; background: var(--peri-l); border-radius: 999px; font: bold 10px var(--f-head); }
+.detail footer .play-btn { margin-left: auto; }
+.detail footer .play-btn.dig { background: var(--peach); }
+.detail.hide { display: none; }
+
+
+/* --------------------------------------------------------------------------
+   17. UNDER CONSTRUCTION
+   -------------------------------------------------------------------------- */
+.hazard { height: 18px; background: repeating-linear-gradient(-45deg, var(--must) 0 12px, var(--ink) 12px 24px); background-size: 34px 100%; animation: belt 1s linear infinite; border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink); }
+@keyframes belt { to { background-position: 34px 0; } }
+.dig-site { padding: 16px; text-align: center; }
+.dig-site .builder { display: block; width: 260px; max-width: 80%; margin: 0 auto; }
+.dig-site h1 { margin: 4px 0 6px; font: bold 30px/1.05 var(--f-loud); letter-spacing: -.5px; }
+.dig-site h1 #dig-name { background: linear-gradient(transparent 55%, var(--must) 55% 92%, transparent 92%); padding: 0 6px; }
+.dig-site .lead { display: inline-block; margin: 4px 0 6px; padding: 2px 12px; background: var(--ink); color: var(--must); border-radius: 999px; font: bold 11px var(--f-head); }
+.sign { display: none; }
+.progress { width: 70%; margin: 10px auto; text-align: left; font: bold 11px var(--f-head); }
+.progress .track { height: 20px; padding: 3px; border: 3px solid var(--ink); border-radius: 999px; background: var(--paper); }
+.progress .track i { display: block; height: 100%; width: 3%; border-radius: 999px; background: var(--coral); animation: crawl 6s ease-in-out infinite alternate; }
+@keyframes crawl { to { width: 9%; } }
+.otherpages { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; padding: 12px; }
+.otherpages a { display: flex; align-items: center; gap: 8px; padding: 5px 10px 5px 5px; background: var(--paper); border: 2px solid var(--ink); border-radius: 999px; color: var(--ink); text-decoration: none; font: bold 11px var(--f-head); box-shadow: 2px 2px 0 var(--ink); }
+.otherpages a:hover { background: var(--must); }
+.otherpages img { width: 26px; height: 26px; object-fit: contain; }
+
+
+/* --------------------------------------------------------------------------
+   18. PHONES — same retrofit as the 1999 version
+   -------------------------------------------------------------------------- */
+@media (max-width: 820px) {
+  body { padding: 0 0 20px; font-size: 14px; }
+  .page { width: auto; margin: 8px; border-radius: 16px; box-shadow: 6px 6px 0 var(--coral); }
+}
+@media (max-width: 760px) {
+  .masthead { flex-wrap: wrap; justify-content: center; min-height: 0; padding: 8px 8px 0; }
+  .splat { order: 1; width: 100%; max-width: 340px; height: 130px; margin: 30px 0 0; }
+  .splat img { width: 250px; }
+  .bubble { left: 50%; top: 8px; transform: translateX(-50%) rotate(2deg); font-size: 13px; }
+  .bubble::after { left: auto; right: 30px; }
+  .visionary { order: 3; width: 110px; margin: 0; }
+  .mast-side { order: 2; flex: 0 0 100%; text-align: center; margin: 0 0 6px; }
+
+  .tabs { flex-wrap: wrap; gap: 8px 6px; padding: 10px 6px; }
+  .tabs a { font-size: 13px; padding: 5px 11px; }
+
+
+  table.layout, table.layout > tbody, table.layout > tbody > tr, table.layout > tbody > tr > td { display: block; width: 100%; }
+  table.layout > tbody > tr { display: flex; flex-direction: column; }
+  .col-main  { order: 1; padding: 22px 10px 8px !important; }
+  .col-right { order: 2; padding: 6px 10px 10px !important; display: grid !important; grid-template-columns: 1fr 1fr; gap: 0 12px; align-items: start; }
+  .col-left  { order: 0; border-right: 0; border-bottom: 3px solid var(--ink); }
+  .col-left .campus { display: flex; overflow-x: auto; gap: 4px; padding: 6px; scroll-snap-type: x mandatory; }
+  .col-left .campus li { flex: 0 0 auto; scroll-snap-align: start; }
+  .col-left .campus a { flex-direction: column; width: 76px; gap: 3px; font-size: 11px; text-align: center; }
+  .col-left .campus small { display: none; }
+  .col-left .rail-extras { display: grid; grid-template-columns: 1fr 1fr 1fr; }
+  .col-left .rail-box { margin: 6px 4px 10px; padding: 6px 4px; }
+
+  .welcome .box-body { flex-direction: column-reverse; align-items: center; }
+  .welcome .sitter { margin: -30px 0 0; width: 130px; flex-basis: auto; }
+  .services { grid-template-columns: 1fr 1fr; }
+  .cards { grid-template-columns: 1fr 1fr; gap: 10px; padding: 10px; }
+  .slide { flex-direction: column; text-align: center; }
+  .slide::before { left: 50%; transform: translateX(-50%); }
+  .slide img { width: 84px; height: 84px; flex-basis: 84px; }
+  .sticky { transform: none; }
+
+  .dir { display: flex; overflow-x: auto; gap: 4px; }
+  .dir li { flex: 0 0 auto; }
+  .registry .illus { width: 100px; margin-top: -20px; }
+  .detail header { flex-wrap: wrap; }
+  .detail .status { margin-left: 0; }
+}
+@media (max-width: 400px) {
+  .col-right { grid-template-columns: 1fr; }
+  .col-left .rail-extras { grid-template-columns: 1fr 1fr; }
+  .col-left .rail-extras .rail-box:last-child { grid-column: span 2; }
+}
+
+/* 19. Reduced motion: everything holds still. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+
+}
+
+/* ========================================================================
+   SCHWWAAA-MEMPHIS v1.1 — broadcast / signup / compact corner help
+   ======================================================================== */
+.mast-side {
+  position: relative; z-index: 1; align-self: stretch;
+  min-width: 60px; flex: 1; margin-top: 0;
+  display: flex; justify-content: flex-end; align-items: flex-end;
+  padding: 0 4px 13px;
+}
+.help-corner {
+  display: grid; place-items: center;
+  width: 43px; height: 43px;
+  border: 3px solid var(--ink);
+  border-radius: 52% 48% 35% 65% / 48% 45% 55% 52%;
+  background: var(--must); color: var(--ink) !important;
+  box-shadow: 4px 4px 0 var(--ink);
+  transform: rotate(10deg);
+  font: 900 27px/1 var(--f-loud); text-decoration: none;
+  transition: transform .17s ease;
+}
+.help-corner:hover, .help-corner:focus-visible { background: var(--teal); transform: rotate(-11deg) scale(1.12); }
+
+/* Ecstatic broadcast parade: a loop of announcements and Memphis symbols,
+   cut-paper badge, hard shadows, asymmetry. NOT a financial quote ticker. */
+.bulletin-bar {
+  --bulletin-accent: var(--must);
+  position: relative; isolation: isolate;
+  display: flex; align-items: center; gap: 13px;
+  min-width: 0; min-height: 74px; padding: 8px 13px;
+  background: repeating-linear-gradient(125deg, transparent 0 56px, rgba(255,255,255,.1) 56px 63px, transparent 63px 108px), var(--peri);
+  border-bottom: 4px solid var(--ink); overflow: hidden;
+}
+.bulletin-bar[data-state="live"] { --bulletin-accent: var(--coral); background-color: #ff6699; }
+.bulletin-bar::before {
+  content: ''; position: absolute;
+  width: 76px; height: 76px; left: 20%; top: -64px;
+  border: 8px solid var(--ink); border-radius: 50%;
+  opacity: .32; pointer-events: none;
+}
+.bulletin-head {
+  position: relative; z-index: 1; flex: 0 0 auto;
+  display: flex; align-items: center; justify-content: center; gap: 3px;
+  min-width: 118px; padding: 9px 12px;
+  color: var(--ink); background: var(--bulletin-accent);
+  border: 3px solid var(--ink); border-radius: 8px 20px 8px 20px;
+  transform: rotate(-5deg); box-shadow: 4px 4px 0 var(--ink);
+}
+.bulletin-label { font: 900 17px/1 var(--f-loud); white-space: nowrap; }
+.bulletin-spark { font-size: 21px; line-height: 1; }
+.bulletin-led { display: block; width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--ink); background: var(--paper); }
+.bulletin-bar[data-state="live"] .bulletin-led { background: #ff0033; animation: bulletin-pulse 1.2s steps(2) infinite; }
+@keyframes bulletin-pulse { 50% { opacity: .25; transform: scale(.65); } }
+.bulletin-viewport {
+  position: relative; flex: 1; min-width: 0; overflow: hidden;
+  border-block: 2px dashed rgba(255,255,255,.35); padding-block: 8px;
+}
+.bulletin-static {
+  margin: 0; color: var(--paper);
+  font: 900 clamp(16px, 2.4vw, 27px)/1.25 var(--f-loud);
+  text-transform: uppercase; letter-spacing: .02em;
+  text-shadow: 2px 2px 0 var(--ink);
+}
+.bulletin-bar.has-motion .bulletin-static {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  white-space: nowrap; clip: rect(0,0,0,0); clip-path: inset(50%);
+}
+.bulletin-track { display: flex; width: max-content; animation: bulletin-parade 42s linear infinite; }
+.bulletin-group { display: flex; align-items: center; flex: 0 0 auto; gap: 0; min-width: 100%; }
+.bulletin-message {
+  display: inline-block; margin-right: 22px; color: var(--paper);
+  font: 900 clamp(18px, 2.15vw, 27px)/1.3 var(--f-loud);
+  text-transform: uppercase; letter-spacing: .025em;
+  white-space: nowrap; text-shadow: 3px 3px 0 var(--ink);
+}
+.bulletin-symbol { display: inline-block; margin-right: 22px; color: var(--must); font-size: 26px; line-height: 1; transform: rotate(-14deg); }
+.bulletin-symbol:nth-of-type(4n) { color: var(--teal); }
+.bulletin-bar:hover .bulletin-track, .bulletin-bar:focus-within .bulletin-track { animation-play-state: paused; }
+@keyframes bulletin-parade { to { transform: translateX(-50%); } }
+.bulletin-action {
+  position: relative; z-index: 1; flex: 0 0 auto;
+  display: inline-block; padding: 8px 11px;
+  background: var(--paper); border: 3px solid var(--ink);
+  border-radius: 16px 6px 16px 6px;
+  box-shadow: 3px 3px 0 var(--ink); transform: rotate(3deg);
+  color: var(--ink) !important; text-decoration: none;
+  font: 900 11px/1.2 var(--f-head);
+}
+.bulletin-action[hidden] { display: none; }
+.bulletin-action:hover, .bulletin-action:focus-visible { background: var(--must); transform: rotate(-3deg); }
+.bulletin-doodle { position: relative; display: block; font-size: 24px; color: var(--must); transform: rotate(15deg); }
+
+/* Cheerful mail-order form in the former poll spot. */
+.newsletter {
+  position: relative; overflow: hidden;
+  margin: 0 0 22px; padding: 14px 12px 16px;
+  background: var(--must); border: 3px solid var(--ink);
+  border-radius: 27px 9px 27px 9px; box-shadow: 5px 5px 0 var(--pink);
+  transform: rotate(.6deg);
+}
+.newsletter::before { content: ''; position: absolute; width: 70px; height: 70px; top: -34px; right: -34px; background: var(--coral); border: 3px solid var(--ink); border-radius: 50%; }
+.newsletter-confetti { display: block; color: var(--peri); text-align: center; letter-spacing: 10px; font-size: 22px; line-height: 1; }
+.newsletter-stamp { display: table; margin: 3px auto 8px; padding: 3px 8px; color: var(--paper); background: var(--ink); font: 900 9px var(--f-mono); transform: rotate(-4deg); }
+.newsletter h2 { margin: 0 0 7px; font: 900 24px/.98 var(--f-loud); text-align: center; text-transform: uppercase; letter-spacing: -.5px; }
+.newsletter h2 span { color: var(--peri); }
+.newsletter > p { margin: 0 0 10px; text-align: center; font: bold 11px/1.4 var(--f-body); }
+.newsletter label { display: block; margin-bottom: 3px; font: 900 10px var(--f-head); }
+.newsletter input[type="email"] { display: block; width: 100%; min-width: 0; padding: 9px 7px; border: 3px solid var(--ink); border-radius: 8px; background: var(--paper); font: 11px var(--f-body); box-shadow: inset 2px 2px 0 var(--peri-l); }
+.newsletter input:focus-visible { outline: 3px dashed var(--peri); outline-offset: 2px; }
+.newsletter-button { width: 100%; margin-top: 9px; padding: 10px 5px; background: var(--coral); color: var(--ink); border: 3px solid var(--ink); border-radius: 18px 5px 18px 5px; box-shadow: 3px 3px 0 var(--ink); font: 900 12px var(--f-head); cursor: pointer; }
+.newsletter-button:hover:not(:disabled) { background: var(--teal); transform: translateY(-2px); }
+.newsletter-button:disabled { opacity: .65; cursor: not-allowed; }
+.newsletter-note { margin: 6px 0 0; font: 10px/1.35 var(--f-body); text-align: center; }
+.newsletter-stars { display: block; margin-top: 6px; color: var(--peri); text-align: center; letter-spacing: 10px; font-size: 18px; }
+
+@media (max-width: 760px) {
+  .mast-side { flex: 0 0 auto; order: 2; margin-left: auto; padding-right: 10px; min-height: 58px; }
+  .help-corner { width: 38px; height: 38px; font-size: 24px; }
+  .bulletin-bar { min-height: 64px; gap: 8px; padding: 8px; }
+  .bulletin-head { min-width: 0; padding: 8px; }
+  .bulletin-label { font-size: 13px; }
+  .bulletin-spark, .bulletin-doodle { display: none; }
+  .bulletin-message { font-size: 18px; }
+  .bulletin-action { font-size: 10px; max-width: 90px; text-align: center; }
+  .newsletter { transform: none; }
+}
+@media (max-width: 440px) {
+  .bulletin-head { padding: 8px 5px; }
+  .bulletin-led { width: 8px; height: 8px; }
+  .bulletin-bar { gap: 6px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bulletin-track { display: none; }
+  .bulletin-bar.has-motion .bulletin-static { position: static; width: auto; height: auto; overflow: visible; white-space: normal; clip: auto; clip-path: none; }
+}
+
+
+/* ========================================================================
+   SCHWWAAA-MEMPHIS v1.2 — fully clickable broadcasts / masthead ensemble
+   ======================================================================== */
+/* The moving ribbon is now a single anchor, clickable even between events.
+   Preserve the exuberant ticker styling rather than browser link defaults. */
+a.bulletin-bar, a.bulletin-bar:visited, a.bulletin-bar:hover {
+  color: var(--paper);
+  text-decoration: none;
+  cursor: pointer;
+}
+.bulletin-bar:focus-visible { outline: 5px dashed var(--must); outline-offset: -6px; }
+.bulletin-bar:hover .bulletin-action, .bulletin-bar:focus-visible .bulletin-action {
+  background: var(--must); transform: rotate(-3deg) translateY(-2px);
+}
+
+/* Keep the original television-raiser and add the site's existing high-five
+   pair and pixel-cart builder. All three groups share the same SVG style. */
+.masthead { min-height: 202px; }
+.splat { flex: 0 0 360px; }
+.visionary { flex: 0 0 150px; }
+.mast-crew {
+  position: relative; z-index: 1;
+  flex: 1 1 auto; min-width: 0;
+  align-self: stretch;
+  display: flex; align-items: flex-end; justify-content: space-around;
+  gap: 4px; margin-left: 10px; padding: 12px 8px 0;
+}
+.mast-crew img { display: block; flex: 0 1 auto; max-width: 100%; height: auto; }
+.mast-crew .crew-highfive { width: clamp(145px, 18vw, 210px); transform-origin: 50% 100%; animation: mast-highfive 5s ease-in-out infinite; }
+.mast-crew .crew-builder { width: clamp(110px, 14vw, 170px); transform-origin: 50% 100%; animation: mast-builder 5.6s ease-in-out infinite; }
+@keyframes mast-highfive { 0%, 100% { transform: rotate(-2deg); } 50% { transform: translateY(-5px) rotate(2deg); } }
+@keyframes mast-builder  { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px) rotate(-2deg); } }
+.bubble { left: 62%; top: 12px; transform: translateX(-50%) rotate(3deg); }
+.mast-side { flex: 0 0 58px; min-width: 45px; }
+@media (max-width: 1150px) {
+  .mast-crew .crew-builder { display: none; }
+  .mast-crew { justify-content: center; }
+  .bubble { left: 68%; }
+}
+@media (max-width: 900px) and (min-width: 761px) {
+  .splat { flex-basis: 320px; width: 320px; }
+  .splat img { width: 265px; }
+  .visionary { flex-basis: 125px; width: 125px; }
+  .mast-crew .crew-highfive { width: 170px; }
+  .bubble { left: 64%; }
+}
+@media (max-width: 760px) {
+  .masthead { min-height: 0; padding-bottom: 0; }
+  .splat { flex: 0 1 100%; max-width: 340px; width: 100%; }
+  .visionary { order: 3; flex: 0 0 100px; width: 100px; margin: 0; }
+  .mast-crew { order: 4; flex: 0 0 150px; align-self: flex-end; padding: 0; margin: 0; }
+  .mast-crew .crew-highfive { width: 145px; }
+  .mast-crew .crew-builder { display: none; }
+  .mast-side { position: absolute; right: 5px; bottom: 0; order: 5; min-width: 0; width: 50px; padding: 0 4px 9px; }
+  .bubble { left: 50%; top: 8px; transform: translateX(-50%) rotate(2deg); }
+}
+@media (max-width: 360px) {
+  .visionary { flex-basis: 87px; width: 87px; }
+  .mast-crew { flex-basis: 128px; }
+  .mast-crew .crew-highfive { width: 126px; }
+}
+/* The floppy-disk employee is animated *inside* assets/people/sitter.svg:
+   their upper body types and screen pixels pulse while the disk stays put. */
+@media (prefers-reduced-motion: reduce) {
+  .mast-crew .crew-highfive, .mast-crew .crew-builder { animation: none !important; }
+}
+
+
+/* ========================================================================
+   SCHWWAAA-MEMPHIS v1.3 — TV GIF, animated Memphis, navigation, panic modes
+   ======================================================================== */
+/* A real image GIF is placed INSIDE the existing television glass. */
+.crt .glass { background: #333366; isolation: isolate; }
+.crt .glass .crt-animated,
+.crt .glass .crt-still {
+  position: absolute; display: block; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+}
+.crt .glass .crt-still { display: none; }
+.crt .glass::after { z-index: 2; pointer-events: none; opacity: .38; }
+
+/* Member call to action: rolling badge + cartoon star, still fully clickable. */
+.citizen .bevel {
+  position: relative; transform-origin: 50% 75%;
+  animation: membership-bounce 3.2s ease-in-out infinite;
+  box-shadow: 3px 4px 0 var(--ink);
+}
+.citizen .bevel::after {
+  content: '✦'; position: absolute; top: -14px; right: -9px;
+  color: var(--coral); font-size: 23px; line-height: 1;
+  text-shadow: 1px 1px 0 var(--ink); animation: membership-star 2.5s linear infinite;
+}
+.citizen .bevel:hover, .citizen .bevel:focus-visible {
+  animation: membership-hover .55s cubic-bezier(.2,1.4,.3,1) infinite alternate;
+  background: var(--must); box-shadow: 5px 6px 0 var(--ink);
+}
+@keyframes membership-bounce {
+  0%, 75%, 100% { transform: translateY(0) rotate(-2deg); }
+  84% { transform: translateY(-5px) rotate(3deg); }
+  92% { transform: translateY(1px) rotate(-1deg); }
+}
+@keyframes membership-star { 50% { transform: scale(1.4) rotate(90deg); } 100% { transform: scale(1) rotate(180deg); } }
+@keyframes membership-hover { to { transform: translateY(-5px) rotate(4deg) scale(1.03); } }
+
+/* Once started, the broadcast ticker must keep rolling on hover, focus AND press. */
+.bulletin-track, .bulletin-bar:hover .bulletin-track,
+.bulletin-bar:focus .bulletin-track, .bulletin-bar:focus-within .bulletin-track,
+.bulletin-bar:active .bulletin-track { animation-play-state: running; }
+
+/* Extra animated Memphis shapes behind the logo, bubble and character trio. */
+.mast-ornaments { position: absolute; inset: 0; overflow: hidden; z-index: 0; pointer-events: none; }
+.mast-ornaments .ornament { position: absolute; display: block; transform-origin: center; }
+.orbit-star { top: 10px; left: 44%; width: 39px; height: 39px; background: var(--coral);
+  clip-path: polygon(50% 0, 60% 33%, 100% 16%, 72% 50%, 100% 82%, 59% 68%, 50% 100%, 40% 67%, 0 85%, 27% 50%, 0 16%, 40% 32%);
+  animation: memphis-spin 13s linear infinite; }
+.hoop { right: 7%; top: 15%; width: 41px; height: 41px; border: 8px solid var(--teal); border-radius: 50%;
+  animation: memphis-pop 4s ease-in-out infinite; }
+.curl { left: 38%; bottom: 22px; width: 68px; height: 30px; border: 7px solid var(--peri); border-top: 0;
+  border-radius: 3px 3px 36px 36px; transform: rotate(-13deg); animation: memphis-wobble 3.7s ease-in-out infinite alternate; }
+.grid-dots { left: 51%; bottom: 22px; width: 51px; height: 42px; opacity: .7;
+  background-image: radial-gradient(var(--ink) 3px, transparent 3.5px); background-size: 13px 13px;
+  animation: memphis-float 4.8s ease-in-out infinite; }
+.halfmoon { right: 26%; bottom: -15px; width: 63px; height: 63px; background: var(--pink); border-radius: 50%;
+  clip-path: inset(0 0 49% 0); transform: rotate(-27deg); animation: memphis-wobble 4.5s ease-in-out infinite alternate-reverse; }
+.ziggy { right: 17%; top: 23px; width: 77px; height: 24px;
+  background: var(--must); clip-path: polygon(0 30%,16% 80%,32% 20%,48% 80%,64% 20%,80% 80%,100% 20%,100% 50%,80% 100%,64% 50%,48% 100%,32% 50%,16% 100%,0 60%);
+  animation: memphis-float 6s ease-in-out infinite reverse; }
+.tiny-star { right: 1%; bottom: 28%; width: 22px; height: 22px; background: var(--must);
+  clip-path: polygon(50% 0,63% 38%,100% 50%,63% 62%,50% 100%,37% 62%,0 50%,37% 38%);
+  animation: memphis-spin 6s linear infinite reverse; }
+@keyframes memphis-spin { to { transform: rotate(360deg); } }
+@keyframes memphis-pop { 50% { transform: scale(1.26) translateY(4px); } }
+@keyframes memphis-wobble { to { transform: translateY(-7px) rotate(14deg); } }
+@keyframes memphis-float { 50% { transform: translateY(-10px) rotate(-7deg); } }
+/* Keep help consistently in the right corner of the LOGO PANEL on Products. */
+.catalog .mast-side { position: absolute; z-index: 6; right: 9px; bottom: 8px; top: auto; left: auto;
+  margin: 0; padding: 0; width: 45px; min-width: 0; height: 45px; display: flex; justify-content: flex-end; align-items: flex-end; }
+.catalog .help-corner { position: static; margin: 0; flex: 0 0 42px; }
+
+/* New idea widget: left of the actual directory, not repeated at the page bottom. */
+.rail-idea {
+  position: relative; margin: 13px 8px 14px; padding: 21px 9px 12px;
+  background: var(--must); border: 3px solid var(--ink); color: var(--ink);
+  border-radius: 11px 28px 12px 26px; box-shadow: 4px 5px 0 var(--coral);
+  transform: rotate(-.7deg); overflow: visible;
+}
+.rail-idea .idea-sticker { position: absolute; left: -5px; top: -11px; padding: 2px 8px;
+  background: var(--ink); color: var(--paper); border-radius: 50px; transform: rotate(-7deg); font: bold 9px var(--f-mono); }
+.rail-idea .idea-shapes { position: absolute; right: 6px; top: 6px; display: flex; gap: 3px; font-size: 14px; color: var(--coral); }
+.rail-idea .idea-shapes span:nth-child(2) { color: var(--peri); }
+.rail-idea .idea-shapes span:nth-child(3) { color: var(--teal); }
+.rail-idea h2 { margin: 10px 0 6px; text-transform: uppercase; font: 900 17px/1.07 var(--f-loud); letter-spacing: -.3px; }
+.rail-idea p { margin: 0 0 10px; font: 11px/1.45 var(--f-body); }
+.rail-idea em { font-style: normal; background: var(--paper); box-decoration-break: clone; padding: 1px 3px; }
+.rail-idea a { display: inline-block; padding: 5px 8px; color: var(--paper); background: var(--peri);
+  border: 2px solid var(--ink); border-radius: 9px 3px 9px 3px; text-decoration: none;
+  font: bold 10px var(--f-head); box-shadow: 2px 2px 0 var(--ink); transform: rotate(2deg); }
+.rail-idea a:hover, .rail-idea a:focus-visible { background: var(--coral); }
+
+/* Multiple page-load surprises; each effect has a distinct visual treatment. */
+.panic-caption { position: fixed; z-index: 3000; left: 50%; top: 14px; transform: translateX(-50%) rotate(-2deg);
+  padding: 10px 18px; max-width: calc(100vw - 20px); width: max-content; text-align: center;
+  color: var(--paper); background: var(--ink); border: 3px solid var(--must); border-radius: 20px 5px 20px 5px;
+  box-shadow: 5px 6px 0 var(--coral); font: 900 14px var(--f-head); pointer-events: none; }
+.panic-caption[hidden] { display: none; }
+body.panic-quake .page { animation: sch-quake .15s steps(2) 10; }
+@keyframes sch-quake { 0% { transform: translate(-9px, 5px) rotate(-.8deg); } 50% { transform: translate(9px,-4px) rotate(1.3deg); } 100% { transform: translate(-4px, 7px); } }
+body.panic-disco .page { animation: sch-disco 1.7s steps(7) both; }
+@keyframes sch-disco { 0% { filter: hue-rotate(0deg) saturate(1); } 30% { filter: hue-rotate(130deg) saturate(2.4); } 60% { filter: hue-rotate(245deg) saturate(3); } 100% { filter: hue-rotate(360deg) saturate(1); } }
+body.panic-confetti .page { outline: 8px dotted var(--coral); outline-offset: -10px; }
+.panic-scrap { position: fixed; z-index: 2600; display: block; font-size: 30px; font-weight: 900;
+  pointer-events: none; text-shadow: 2px 2px 0 var(--ink); animation: panic-burst 1.8s cubic-bezier(.15,.85,.25,1) both; }
+@keyframes panic-burst { 0% { transform: translate(0,0) rotate(0deg) scale(.4); opacity: 1; } 100% { transform: translate(var(--dx),var(--dy)) rotate(var(--twist)) scale(1.6); opacity: 0; } }
+body.panic-fold .page { animation: sch-fold 1.7s ease-in-out both; transform-origin: 50% 20%; }
+@keyframes sch-fold { 0%,100% { transform: perspective(900px) rotateY(0) rotateX(0); }
+  27% { transform: perspective(900px) rotateY(-13deg) rotateX(8deg) scale(.92); }
+  57% { transform: perspective(900px) rotateY(15deg) rotateX(-5deg) scale(.98); }
+  80% { transform: perspective(900px) rotateY(-6deg) rotateX(4deg); } }
+@media (max-width: 760px) {
+  .catalog .mast-side { right: 9px; bottom: 8px; width: 42px; height: 42px; }
+  .mast-ornaments .curl, .mast-ornaments .grid-dots { display: none; }
+  .mast-ornaments .orbit-star { left: 2%; top: 32%; }
+  .mast-ornaments .hoop { right: 13%; top: 23%; }
+  .mast-ornaments .halfmoon { right: 35%; bottom: 2px; }
+  .mast-ornaments .ziggy { right: 2%; top: 17%; }
+  .rail-idea { max-width: 600px; margin: 12px auto 10px; }
+  .rail-idea h2 { margin-top: 3px; }
+  .rail-idea p { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .crt .glass .crt-animated { display: none !important; }
+  .crt .glass .crt-still { display: block !important; }
+  .citizen .bevel, .citizen .bevel::after,
+  .mast-ornaments .ornament { animation: none !important; }
+  .bulletin-track { display: none !important; }
+  .panic-caption { transform: translateX(-50%); }
+  .panic-scrap { display: none !important; }
+}
