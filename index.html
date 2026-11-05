@@ -43,6 +43,47 @@
 
   <div class="nosignal" aria-hidden="true"><span>SYNERGY LOST · CH 99</span></div>
 
+  <!-- MEMBER CHANNEL 99 — power on to load the configured video; power off removes it. -->
+  <dialog class="member-modal" id="membership-modal" aria-labelledby="membership-title"
+    aria-describedby="membership-description">
+    <div class="member-dialog">
+      <div class="member-squiggle" aria-hidden="true">✳ ✦ ● ▲ ✳</div>
+      <button class="member-close" id="member-close" type="button" aria-label="Close member TV">✕ CLOSE</button>
+      <p class="member-eyebrow">★ SCHWWAAA MEMBERSHIP DIVISION ★</p>
+      <h2 id="membership-title">WELCOME TO CHANNEL 99!</h2>
+      <p id="membership-description">Official instructions: turn the TV on. Enjoy the transmission. Turn it off whenever you like.</p>
+      <div class="member-television" id="member-television">
+        <div class="member-aerial" aria-hidden="true"><i></i><i></i></div>
+        <div class="member-tv-case">
+          <div class="member-tv-screen" id="member-tv-screen">
+            <div class="member-tv-idle" aria-hidden="true">
+              <div class="member-tv-offmark">✳</div>
+              <strong>NO SIGNAL</strong>
+              <span>CH 99 · SCHWWAAA TV</span>
+              <small>PRESS POWER TO TUNE IN</small>
+            </div>
+            <div class="member-tv-media" id="member-tv-media" aria-label="Membership video player"></div>
+            <div class="member-tv-scanlines" aria-hidden="true"></div>
+          </div>
+          <div class="member-tv-console">
+            <strong class="member-tv-brand">SCHW<br>TRONIC</strong>
+            <span class="member-tv-channel">CH<br><b>99</b></span>
+            <button class="member-tv-power" id="member-tv-power" type="button" aria-pressed="false"
+              aria-label="Turn television on and play video"><span class="member-power-symbol" aria-hidden="true">⏻</span><span class="member-power-label">POWER ON</span></button>
+            <span class="member-tv-light" aria-hidden="true"></span>
+            <span class="member-tv-knobs" aria-hidden="true">◉<br>◉</span>
+          </div>
+        </div>
+        <div class="member-tv-stand" aria-hidden="true"></div>
+      </div>
+      <div class="member-bottom-row">
+        <p class="member-caption" id="member-caption" role="status" aria-live="polite">Your member-exclusive-ish signal is currently OFF AIR.</p>
+        <a class="member-open-original" id="member-open-original" href="https://www.youtube.com/watch?v=e7QLoMve8BE"
+          target="_blank" rel="noopener noreferrer">OPEN VIDEO ↗</a>
+      </div>
+    </div>
+  </dialog>
+
   <div class="page">
 
     <!-- ============ MASTHEAD ============ -->
@@ -102,13 +143,14 @@
     <nav class="tabs" aria-label="Main">
       <a href="index.html" aria-current="page">Home</a>
       <a href="projects.html">Products</a>
-      <a href="https://live.schwwaaa.net">Live</a>
+      <a href="https://live.schwwaaa.net" target="_blank" rel="noopener noreferrer">Live</a>
       <a href="#pressroom">Press</a>
       <a href="construction.html?p=Contact">Contact</a>
     </nav>
 
     <!-- BROADCAST RIBBON: edit messages and stream link in site-config.js -->
     <a class="bulletin-bar" id="broadcast" href="https://live.schwwaaa.net"
+      target="_blank" rel="noopener noreferrer"
       aria-label="Open SCHWWAAA Live — broadcasts and upcoming events" data-state="upcoming">
       <div class="bulletin-head" aria-hidden="true"><span class="bulletin-spark">&#10022;</span><span
           class="bulletin-label" id="bulletin-label">UP NEXT!</span><span class="bulletin-led"></span></div>
@@ -142,11 +184,18 @@
         </ul>
         END CAMPUS NAV -->
 
+          <!-- Today's directive — moved here from the right rail to sit above Citizen Status. -->
+          <section class="sticky" aria-label="Today's directive">
+            <h2>today’s directive:</h2>
+            <p>Build it.<br>Break it.<br>Schwwaaa it.</p>
+            <small>no problems, only interesting solutions.</small>
+          </section>
+
           <div class="rail-extras">
             <div class="rail-box citizen">
               <h3>citizen status:</h3>
               <b>GUEST</b>
-              <a class="bevel" href="https://www.youtube.com/watch?v=e7QLoMve8BE">BECOME A MEMBER</a>
+              <button class="bevel member-trigger" type="button" aria-haspopup="dialog" aria-controls="membership-modal">BECOME A MEMBER</button>
             </div>
 
             <div class="rail-box">
@@ -342,12 +391,6 @@
             <div class="stand"></div>
             <p>Corporate<br>Dreams<br>Since 1999</p>
           </section>
-
-          <!-- <section class="sticky" aria-label="Today's directive">
-          <h2>today’s directive:</h2>
-          <p>Build it.<br>Break it.<br>Schwwaaa it.</p>
-          <small>no problems, only interesting solutions.</small>
-        </section> -->
 
           <section class="news" id="pressroom" aria-labelledby="news-title">
             <h2 id="news-title">latest <em>news!</em></h2>

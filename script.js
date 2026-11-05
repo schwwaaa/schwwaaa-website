@@ -139,30 +139,153 @@
     if (label) label.textContent = isLive ? 'LIVE!' : 'UP NEXT!';
     if (staticLine) staticLine.textContent = message;
     if (track && !calm) {
-      for (let copy = 0; copy < 2; copy++) {
+      // Equal-width copies have no empty handoff or snap. Rebuild on resize to
+      // keep short messages filling even an extra-wide desktop viewport.
+      const buildParade = () => {
+        track.replaceChildren();
         const group = document.createElement('div');
         group.className = 'bulletin-group';
-        for (let i = 0; i < 4; i++) {
+        track.appendChild(group);
+        const appendPhrase = i => {
           const item = document.createElement('span');
           item.className = 'bulletin-message';
           item.textContent = message;
           const symbol = document.createElement('span');
           symbol.className = 'bulletin-symbol';
-          symbol.textContent = ['✦', '●', '▲', '✳'][i];
+          symbol.textContent = ['✦', '●', '▲', '✳'][i % 4];
           group.append(item, symbol);
-        }
-        track.appendChild(group);
-      }
-      bulletin.classList.add('has-motion');
+        };
+        let n = 0;
+        do { appendPhrase(n++); }
+        while (group.getBoundingClientRect().width < track.parentElement.clientWidth + 80 && n < 48);
+        const duplicate = group.cloneNode(true);
+        duplicate.setAttribute('aria-hidden', 'true');
+        track.appendChild(duplicate);
+        const pixels = group.getBoundingClientRect().width;
+        track.style.setProperty('--bulletin-duration', (pixels / 90).toFixed(2) + 's');
+        bulletin.classList.add('has-motion');
+      };
+      buildParade();
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(buildParade, 130);
+      });
     }
     // The *whole ribbon* is one keyboard-accessible link, regardless of whether
     // a stream is live. Its text and destination are edited in site-config.js.
     const destination = String(conf.destinationUrl || 'https://live.schwwaaa.net').trim();
     if (destination.startsWith('https://')) bulletin.href = destination;
+    bulletin.target = '_blank';
+    bulletin.rel = 'noopener noreferrer';
     bulletin.setAttribute('aria-label', isLive
       ? 'WATCH NOW — open SCHWWAAA Live'
       : 'UP NEXT — visit SCHWWAAA Live for broadcasts and upcoming events');
     if (link) link.textContent = isLive ? 'WATCH NOW ➜' : 'VISIT LIVE ➜';
+  }
+
+  /* ------------------------------------------------------------------
+     MEMBER CHANNEL 99 — retro TV modal.
+     The embedded player is not created until the visitor presses POWER ON.
+     POWER OFF, close, Escape, or a backdrop click fully removes the player,
+     immediately ending playback (rather than only hiding the iframe).
+     ------------------------------------------------------------------ */
+  const memberDialog = $('#membership-modal');
+  if (memberDialog) {
+    const triggers = $$('.member-trigger');
+    const closeButton = $('#member-close');
+    const powerButton = $('#member-tv-power');
+    const label = $('.member-power-label', powerButton);
+    const caption = $('#member-caption');
+    const media = $('#member-tv-media');
+    const original = $('#member-open-original');
+    const tv = $('#member-television');
+    const videoUrl = String(window.SCHWWAAA_CONFIG?.membership?.videoUrl || 'https://www.youtube.com/watch?v=e7QLoMve8BE').trim();
+    if (original) original.href = videoUrl;
+    let poweredOn = false;
+    let lastTrigger = null;
+
+    const makePlayer = () => {
+      let url;
+      try { url = new URL(videoUrl, window.location.href); } catch { return null; }
+      const host = url.hostname.toLowerCase();
+      const secure = url.protocol === 'https:';
+      const isYouTube = secure && ['youtube.com', 'www.youtube.com', 'm.youtube.com', 'youtu.be', 'www.youtube-nocookie.com'].includes(host);
+      if (isYouTube) {
+        let id = host === 'youtu.be' ? url.pathname.slice(1).split('/')[0] : url.searchParams.get('v');
+        if (!id && url.pathname.startsWith('/embed/')) id = url.pathname.split('/')[2];
+        if (!id && url.pathname.startsWith('/shorts/')) id = url.pathname.split('/')[2];
+        if (!id || !/^[a-zA-Z0-9_-]{11}$/.test(id)) return null;
+        const frame = document.createElement('iframe');
+        frame.title = 'Schwwaaa membership broadcast';
+        frame.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&playsinline=1&rel=0';
+        frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+        frame.referrerPolicy = 'strict-origin-when-cross-origin';
+        frame.allowFullscreen = true;
+        return frame;
+      }
+      // Locally hosted media files are easy to swap without an embedding service.
+      const isMediaFile = ['http:', 'https:', 'file:'].includes(url.protocol)
+        && /\.(?:mp4|webm|ogg)$/i.test(url.pathname);
+      if (isMediaFile) {
+        const video = document.createElement('video');
+        video.controls = true;
+        video.autoplay = true;
+        video.playsInline = true;
+        video.src = url.href;
+        video.addEventListener('error', () => {
+          if (caption) caption.textContent = 'Video unavailable. Check your membership video URL.';
+        });
+        return video;
+      }
+      return null;
+    };
+
+    const switchOff = () => {
+      poweredOn = false;
+      media.replaceChildren(); // destroying the iframe stops YouTube video + audio
+      tv.classList.remove('is-on');
+      powerButton.setAttribute('aria-pressed', 'false');
+      powerButton.setAttribute('aria-label', 'Turn television on and play video');
+      label.textContent = 'POWER ON';
+      caption.textContent = 'Your member-exclusive-ish signal is currently OFF AIR.';
+    };
+    const switchOn = () => {
+      const player = makePlayer();
+      if (!player) {
+        caption.textContent = 'No playable video configured. Check site-config.js.';
+        return;
+      }
+      media.replaceChildren(player);
+      poweredOn = true;
+      tv.classList.add('is-on');
+      powerButton.setAttribute('aria-pressed', 'true');
+      powerButton.setAttribute('aria-label', 'Turn television off and stop video');
+      label.textContent = 'POWER OFF';
+      caption.textContent = 'TUNED IN! Press POWER OFF to stop the broadcast.';
+      if (player.tagName === 'VIDEO') player.play().catch(() => {
+        caption.textContent = 'Press play in the television to begin the broadcast.';
+      });
+    };
+    powerButton.addEventListener('click', () => poweredOn ? switchOff() : switchOn());
+    triggers.forEach(trigger => trigger.addEventListener('click', () => {
+      lastTrigger = trigger;
+      switchOff();
+      memberDialog.showModal();
+      document.documentElement.classList.add('member-dialog-open');
+      powerButton.focus();
+    }));
+    const closeDialog = () => { switchOff(); memberDialog.close(); };
+    closeButton.addEventListener('click', closeDialog);
+    memberDialog.addEventListener('click', e => {
+      if (e.target === memberDialog) closeDialog();
+    });
+    memberDialog.addEventListener('close', () => {
+      switchOff();
+      document.documentElement.classList.remove('member-dialog-open');
+      if (lastTrigger?.isConnected) lastTrigger.focus({ preventScroll: true });
+    });
+    memberDialog.addEventListener('cancel', () => switchOff());
   }
 
   /* ------------------------------------------------------------------

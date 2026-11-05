@@ -494,12 +494,17 @@ table.layout > tbody > tr > td { vertical-align: top; padding: 0; }
 
 
 /* --------------------------------------------------------------------------
-   12. RIGHT RAIL
+   12. TODAY'S DIRECTIVE + RIGHT RAIL
    -------------------------------------------------------------------------- */
 .sticky { position: relative; margin: 0 0 22px; padding: 12px; background: var(--must); border: 3px solid var(--ink); border-radius: 50% 50% 46% 54% / 18% 22% 20% 24%; transform: rotate(2deg); box-shadow: 4px 4px 0 var(--ink); text-align: center; }
 .sticky h2 { margin: 0 0 4px; font: bold 12px var(--f-head); text-transform: lowercase; }
 .sticky p { margin: 0; font: bold 17px/1.2 var(--f-loud); }
 .sticky small { display: block; margin-top: 6px; font-size: 10px; }
+/* Today's directive moved from the right rail to just above Citizen Status. */
+.col-left > .sticky { margin: 13px 10px 18px; padding: 10px 7px; }
+@media (max-width: 760px) {
+  .col-left > .sticky { width: min(340px, calc(100% - 32px)); margin: 12px auto 16px; }
+}
 
 .news { margin: 0 0 22px; background: var(--paper); border: 3px solid var(--ink); border-radius: var(--blob); overflow: hidden; box-shadow: 5px 5px 0 var(--teal); }
 .news h2 { margin: 0; padding: 6px 10px; background: var(--teal); border-bottom: 3px solid var(--ink); font: bold 15px var(--f-head); text-transform: lowercase; }
@@ -817,8 +822,8 @@ body.glitch .page { animation: tracking .18s steps(3) infinite; }
   position: absolute; width: 1px; height: 1px; overflow: hidden;
   white-space: nowrap; clip: rect(0,0,0,0); clip-path: inset(50%);
 }
-.bulletin-track { display: flex; width: max-content; animation: bulletin-parade 42s linear infinite; }
-.bulletin-group { display: flex; align-items: center; flex: 0 0 auto; gap: 0; min-width: 100%; }
+.bulletin-track { display: flex; width: max-content; animation: bulletin-parade var(--bulletin-duration, 35s) linear infinite; animation-play-state: running; will-change: transform; }
+.bulletin-group { display: flex; align-items: center; flex: 0 0 auto; gap: 0; }
 .bulletin-message {
   display: inline-block; margin-right: 22px; color: var(--paper);
   font: 900 clamp(18px, 2.15vw, 27px)/1.3 var(--f-loud);
@@ -827,8 +832,7 @@ body.glitch .page { animation: tracking .18s steps(3) infinite; }
 }
 .bulletin-symbol { display: inline-block; margin-right: 22px; color: var(--must); font-size: 26px; line-height: 1; transform: rotate(-14deg); }
 .bulletin-symbol:nth-of-type(4n) { color: var(--teal); }
-.bulletin-bar:hover .bulletin-track, .bulletin-bar:focus-within .bulletin-track { animation-play-state: paused; }
-@keyframes bulletin-parade { to { transform: translateX(-50%); } }
+@keyframes bulletin-parade { to { transform: translate3d(-50%, 0, 0); } }
 .bulletin-action {
   position: relative; z-index: 1; flex: 0 0 auto;
   display: inline-block; padding: 8px 11px;
@@ -991,10 +995,8 @@ a.bulletin-bar, a.bulletin-bar:visited, a.bulletin-bar:hover {
 @keyframes membership-star { 50% { transform: scale(1.4) rotate(90deg); } 100% { transform: scale(1) rotate(180deg); } }
 @keyframes membership-hover { to { transform: translateY(-5px) rotate(4deg) scale(1.03); } }
 
-/* Once started, the broadcast ticker must keep rolling on hover, focus AND press. */
-.bulletin-track, .bulletin-bar:hover .bulletin-track,
-.bulletin-bar:focus .bulletin-track, .bulletin-bar:focus-within .bulletin-track,
-.bulletin-bar:active .bulletin-track { animation-play-state: running; }
+/* No interaction state ever pauses the endlessly looped broadcast ticker. */
+.bulletin-bar .bulletin-track { animation-play-state: running !important; }
 
 /* Extra animated Memphis shapes behind the logo, bubble and character trio. */
 .mast-ornaments { position: absolute; inset: 0; overflow: hidden; z-index: 0; pointer-events: none; }
@@ -1084,4 +1086,112 @@ body.panic-fold .page { animation: sch-fold 1.7s ease-in-out both; transform-ori
   .bulletin-track { display: none !important; }
   .panic-caption { transform: translateX(-50%); }
   .panic-scrap { display: none !important; }
+}
+
+
+/* ========================================================================
+   SCHWWAAA-MEMPHIS v1.5 — CHANNEL 99 MEMBER TV
+   ======================================================================== */
+.member-dialog-open { overflow: hidden; }
+.member-modal {
+  position: fixed; inset: 0; max-width: min(760px, calc(100vw - 28px));
+  width: 760px; max-height: min(94dvh, 850px); margin: auto;
+  padding: 0; overflow: auto; border: 5px solid var(--ink);
+  border-radius: 28px 12px 32px 12px; background: var(--paper);
+  color: var(--ink); box-shadow: 12px 13px 0 var(--coral);
+}
+.member-modal:not([open]) { display: none; }
+.member-modal::backdrop { background: rgba(12, 9, 42, .79); }
+.member-dialog {
+  position: relative; padding: 22px clamp(13px, 3vw, 30px) 25px;
+  background: radial-gradient(circle at 8% 88%, var(--pink) 0 30px, transparent 31px),
+    radial-gradient(circle at 93% 19%, var(--must) 0 28px, transparent 29px),
+    repeating-linear-gradient(-45deg, transparent 0 32px, rgba(102,102,255,.075) 32px 36px),
+    var(--paper);
+  text-align: center;
+}
+.member-squiggle { position: absolute; left: 12px; top: 12px; transform: rotate(-12deg); font-size: 18px; letter-spacing: 4px; color: var(--coral); pointer-events: none; }
+.member-close {
+  position: relative; z-index: 2; display: table; margin: -9px -13px 7px auto;
+  border: 3px solid var(--ink); border-radius: 8px 16px 6px 13px;
+  padding: 7px 12px; background: var(--coral); color: var(--ink);
+  box-shadow: 3px 3px 0 var(--ink); font: 900 12px var(--f-head); cursor: pointer;
+}
+.member-close:hover, .member-close:focus-visible { background: var(--must); }
+.member-eyebrow { display: inline-block; margin: 0 0 7px; padding: 4px 11px; transform: rotate(-2deg); background: var(--teal); border: 2px solid var(--ink); font: bold 10px var(--f-head); }
+.member-dialog h2 { margin: 0; font: 900 clamp(23px, 4vw, 38px)/1.05 var(--f-loud); letter-spacing: -.03em; text-shadow: 3px 3px 0 var(--pink); }
+#membership-description { margin: 8px auto 14px; max-width: 480px; font: bold 12px/1.5 var(--f-body); }
+.member-television { position: relative; max-width: 615px; padding-top: 20px; margin: 0 auto; }
+.member-aerial { position: absolute; top: 0; left: 50%; width: 90px; height: 40px; transform: translateX(-50%); }
+.member-aerial i { position: absolute; left: 50%; bottom: -6px; width: 6px; height: 58px; border-radius: 5px; background: var(--ink); transform-origin: bottom; transform: rotate(-37deg); }
+.member-aerial i + i { transform: rotate(37deg); }
+.member-tv-case {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 100px;
+  gap: 9px; padding: 15px;
+  background: linear-gradient(135deg, #ffaccb 0%, var(--coral) 48%, #fb8fad 100%);
+  border: 5px solid var(--ink); border-radius: 44px 26px 38px 28px;
+  box-shadow: inset 5px 5px 0 rgba(255,255,255,.4), 8px 9px 0 var(--ink);
+}
+.member-tv-screen {
+  position: relative; min-width: 0; aspect-ratio: 16 / 9;
+  overflow: hidden; border: 9px solid var(--ink); border-radius: 45% / 15%;
+  background: #10102f; isolation: isolate;
+  box-shadow: inset 0 0 22px rgba(0,0,0,.8);
+}
+.member-tv-idle {
+  position: absolute; inset: 0; display: flex; align-items: center;
+  justify-content: center; flex-direction: column; gap: 4px;
+  background: repeating-linear-gradient(0deg, #252552 0 2px, #161638 2px 5px);
+  color: var(--must); font: 900 clamp(9px, 1.5vw, 17px) var(--f-mono);
+  text-shadow: 2px 2px 0 #111; overflow: hidden;
+}
+.member-tv-offmark { font-size: clamp(30px, 6vw, 55px); color: var(--teal); }
+.member-tv-idle span, .member-tv-idle small { font-size: clamp(7px, 1.1vw, 12px); color: #fff; }
+.member-tv-media { display: none; position: absolute; inset: 0; z-index: 2; background: #000; }
+.member-tv-media iframe, .member-tv-media video { display: block; border: 0; width: 100%; height: 100%; background: #000; }
+.member-television.is-on .member-tv-media { display: block; }
+.member-television.is-on .member-tv-idle { display: none; }
+.member-tv-scanlines { position: absolute; inset: 0; pointer-events: none; z-index: 3; opacity: .12; background: repeating-linear-gradient(transparent 0 3px, #fff 3px 4px); }
+.member-tv-console { display: flex; flex-direction: column; align-items: center; gap: 13px; padding: 8px 0; }
+.member-tv-brand { align-self: stretch; border: 2px solid var(--ink); border-radius: 9px; background: var(--must); padding: 5px 1px; font: 900 12px/.93 var(--f-head); }
+.member-tv-channel { font: 900 11px/1.05 var(--f-mono); }
+.member-tv-channel b { font-size: 28px; color: var(--peri); text-shadow: 1px 1px var(--ink); }
+.member-tv-power { display: flex; flex-direction: column; align-items: center; gap: 5px; width: 76px; padding: 7px 4px; border: 4px solid var(--ink); border-radius: 24px 8px 24px 8px; background: var(--must); color: var(--ink); box-shadow: 3px 4px 0 var(--ink); cursor: pointer; }
+.member-power-symbol { font: 900 27px/1 var(--f-body); }
+.member-power-label { font: 900 9px/1.1 var(--f-head); }
+.member-tv-power:hover, .member-tv-power:focus-visible { background: var(--teal); transform: rotate(-3deg); }
+.member-television.is-on .member-tv-power { background: var(--teal); }
+.member-tv-light { display: block; width: 14px; height: 14px; background: #632b48; border: 3px solid var(--ink); border-radius: 50%; }
+.member-television.is-on .member-tv-light { background: #63ff53; box-shadow: 0 0 10px 4px #63ff5380; }
+.member-tv-knobs { font-size: 19px; line-height: 1.4; transform: rotate(16deg); }
+.member-tv-stand { width: 120px; height: 15px; margin: 0 auto; border: 4px solid var(--ink); border-top: 0; border-radius: 0 0 16px 16px; background: var(--peri); }
+.member-bottom-row { display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 15px; }
+.member-caption { margin: 0; font: bold 11px/1.4 var(--f-body); }
+.member-open-original { display: inline-block; padding: 6px 9px; background: var(--must); border: 2px solid var(--ink); border-radius: 12px 4px 12px 4px; color: var(--ink); font: 900 10px var(--f-head); }
+.member-close:focus-visible, .member-tv-power:focus-visible, .member-open-original:focus-visible { outline: 3px dashed var(--peri); outline-offset: 3px; }
+@media (max-width: 540px) {
+  .member-modal { max-height: 92dvh; border-width: 3px; border-radius: 20px; box-shadow: 5px 6px 0 var(--coral); }
+  .member-dialog { padding: 12px 10px 16px; }
+  .member-squiggle { display: none; }
+  .member-close { margin-right: 0; }
+  .member-dialog h2 { font-size: 24px; }
+  .member-eyebrow { font-size: 8px; }
+  #membership-description { font-size: 10px; }
+  .member-tv-case { grid-template-columns: minmax(0, 1fr) 62px; padding: 7px; gap: 5px; border-width: 3px; border-radius: 24px; box-shadow: 4px 5px 0 var(--ink); }
+  .member-tv-screen { border-width: 5px; border-radius: 23px; }
+  .member-tv-console { gap: 6px; padding: 2px 0; }
+  .member-tv-brand { font-size: 8px; padding: 3px 0; }
+  .member-tv-channel { font-size: 8px; }
+  .member-tv-channel b { font-size: 15px; }
+  .member-tv-power { width: 54px; border-width: 3px; padding: 4px 2px; border-radius: 15px 5px; }
+  .member-power-symbol { font-size: 18px; }
+  .member-power-label { font-size: 7px; }
+  .member-tv-light { width: 11px; height: 11px; }
+  .member-tv-knobs { display: none; }
+  .member-tv-idle { gap: 2px; }
+  .member-tv-offmark { font-size: 26px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .member-tv-scanlines { opacity: 0; }
+  .member-tv-power:hover { transform: none; }
 }
