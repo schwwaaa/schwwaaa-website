@@ -36,6 +36,31 @@
   ];
 
   /* ------------------------------------------------------------------
+     CORPORATE DREAMS TV — six different original GIF channels.
+     Select the NEXT channel on each reload (instead of random selections
+     repeating). sessionStorage is per tab; if unavailable, fall back to
+     random. This runs on home only and never touches member-video playback.
+     ------------------------------------------------------------------ */
+  const corporateScreen = $('#corporate-dreams-gif');
+  if (corporateScreen) {
+    const configuredLoops = window.SCHWWAAA_CONFIG?.corporateDreams?.loops;
+    const loops = Array.isArray(configuredLoops)
+      ? configuredLoops.filter(v => typeof v === 'string' && /^assets\/tv\/[a-zA-Z0-9_-]+\.gif$/.test(v))
+      : [];
+    if (loops.length) {
+      const key = 'schw-corporate-dreams-last-channel';
+      const last = store.get(key, 'session');
+      const n = Number(last);
+      const next = last !== null && Number.isInteger(n) && n >= 0 && n < loops.length
+        ? (n + 1) % loops.length : Math.floor(Math.random() * loops.length);
+      corporateScreen.src = loops[next];
+      corporateScreen.alt = `Animated SCHWWAAA television transmission, channel ${next + 1} of ${loops.length}`;
+      corporateScreen.dataset.channel = String(next + 1);
+      store.set(key, String(next), 'session');
+    }
+  }
+
+  /* ------------------------------------------------------------------
      1. FAKE FLASH INTRO — plays once per browser session.
      sessionStorage is wiped when the tab closes, so returning tomorrow
      shows it again, but clicking around today does not.
@@ -289,12 +314,12 @@
   }
 
   /* ------------------------------------------------------------------
-     5. ODOMETER — "days since corporate dreams began" (1 Jan 1999).
+     5. ODOMETER — "days since corporate dreams began" (1 Jan 2015).
      A real number, not a fake hit count.
      ------------------------------------------------------------------ */
   const odo = $('.odometer');
   if (odo) {
-    const days = Math.floor((Date.now() - Date.UTC(1999, 0, 1)) / 86400000);
+    const days = Math.floor((Date.now() - Date.UTC(2015, 0, 1)) / 86400000);
     const digits = String(days).padStart(6, '0');
     odo.setAttribute('aria-label', days + ' days');
     odo.innerHTML = [...digits].map(d => `<span aria-hidden="true">${d}</span>`).join('');

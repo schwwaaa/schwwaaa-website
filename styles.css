@@ -1,6 +1,6 @@
 /* ==========================================================================
    SCHWWAAA ONLINE — 1999 portal × CORPORATE MEMPHIS
-   "Corporate Dreams Since 1999", now with 400% more synergy.
+   "Corporate Dreams Since 2015", now with 400% more synergy.
 
    THE FUSION, IN ONE PARAGRAPH
    The bones are 1999: an 800×600 fixed-width page, a real <table> layout,
@@ -1194,4 +1194,184 @@ body.panic-fold .page { animation: sch-fold 1.7s ease-in-out both; transform-ori
 @media (prefers-reduced-motion: reduce) {
   .member-tv-scanlines { opacity: 0; }
   .member-tv-power:hover { transform: none; }
+}
+
+
+/* ========================================================================
+   SCHWWAAA MEMPHIS v1.6 — company welcome, production + social network
+   ======================================================================== */
+/* The exact stylized script remains selectable text; give it a clear
+   fallback for systems without mathematical script glyphs. */
+.bubble.bubble-script {
+  font: 600 clamp(12px, 1.45vw, 18px)/1.3 Georgia, "Times New Roman", serif;
+  white-space: normal;
+  max-width: min(58%, 530px);
+  text-align: center;
+  letter-spacing: .1px;
+}
+.hello-wave { display: inline-block; font-size: .7em; vertical-align: .05em; transform-origin: 72% 80%; animation: hello-greet 3.4s ease-in-out infinite; }
+@keyframes hello-greet { 0%,76%,100% { transform: rotate(0); } 82% { transform: rotate(26deg); } 88% { transform: rotate(-12deg); } 94% { transform: rotate(15deg); } }
+.welcome .welcome-rally { font-weight: 800; line-height: 1.4; color: var(--ink); }
+.welcome .box-body > div { min-width: 0; }
+.welcome p + p { margin-top: 9px; }
+
+/* Expand the established What We Do widget instead of making a duplicate. */
+.what-we-do { overflow: visible; }
+.service-title-spark { float: right; color: var(--peri); font: bold 14px var(--f-head); letter-spacing: 3px; }
+.service-intro { margin: 10px 16px 2px; padding: 7px 10px; border-left: 5px solid var(--coral); background: var(--cream); font: bold 12px/1.45 var(--f-body); }
+.services { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 9px; padding: 12px 14px 18px; }
+.services .service-card {
+  min-width: 0; padding: 12px 6px 11px; display: flex; flex-direction: column; align-items: center;
+  background: var(--ice); border: 2px solid var(--ink); border-radius: 17px 7px 16px 8px;
+  box-shadow: 3px 3px 0 var(--ink); text-align: center; transition: transform .16s ease, background .16s ease;
+  text-transform: none;
+}
+.services .service-card:nth-child(4n + 2) { background: var(--peach); transform: rotate(1deg); }
+.services .service-card:nth-child(4n + 3) { background: var(--cream); transform: rotate(-1deg); }
+.services .service-card:nth-child(4n + 4) { background: var(--peri-l); }
+.services .service-card:hover { transform: translateY(-4px) rotate(-2deg); background: var(--must); }
+.services .service-card img { width: 58px; height: 58px; padding: 5px; margin: 0 auto 9px; background: var(--paper); border: 3px solid var(--ink); border-radius: 40% 60% 65% 35%; object-fit: contain; }
+.services .service-card strong { display: block; font: bold 12px/1.15 var(--f-head); text-transform: lowercase; overflow-wrap: anywhere; }
+.services .service-card small { display: block; margin-top: 6px; font: 10px/1.35 var(--f-body); text-transform: none; }
+.services .hand { z-index: 2; }
+
+/* A little portal-era friend-links widget, with locally stored icons. */
+.social-hub { position: relative; margin: 0 0 22px; padding: 10px 10px 15px; background: var(--must); border: 3px solid var(--ink); border-radius: 12px 28px 10px 22px; box-shadow: 5px 5px 0 var(--pink); text-align: center; overflow: hidden; }
+.social-hub::before { content: ''; position: absolute; top: -25px; right: -24px; width: 70px; height: 70px; border: 9px solid var(--ink); border-radius: 50%; opacity: .18; pointer-events: none; }
+.social-hub-top { font-size: 17px; color: var(--peri); letter-spacing: 3px; }
+.social-hub h2 { position: relative; margin: 2px 0 7px; font: bold 23px/.98 var(--f-loud); text-transform: lowercase; }
+.social-hub h2 span { display: inline-block; background: var(--peri-l); padding: 3px 7px; transform: rotate(-3deg); border: 2px solid var(--ink); border-radius: 9px; }
+.social-hub p { margin: 7px 0 12px; font-size: 11px; }
+.social-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.social-link { min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 7px 3px 6px; text-decoration: none; color: var(--ink) !important; background: var(--paper); border: 2px solid var(--ink); border-radius: 18px 7px 16px 7px; box-shadow: 2px 3px 0 var(--ink); font: bold 11px var(--f-head); transition: transform .2s ease; }
+.social-link:hover, .social-link:focus-visible { transform: translateY(-4px) rotate(-3deg); background: var(--ice); }
+.social-link:focus-visible { outline: 3px dashed var(--peri); outline-offset: 3px; }
+.social-link img { display: block; width: 39px; height: 39px; object-fit: contain; }
+.social-link span { overflow-wrap: anywhere; }
+.social-github { background: var(--peri-l); }
+.social-instagram { background: var(--peach); }
+.social-linktree { background: var(--mint); }
+.social-hub-bottom { display: block; padding-top: 9px; color: var(--ink); letter-spacing: 8px; }
+@media (max-width: 760px) {
+  .bubble.bubble-script { top: 6px; max-width: calc(100% - 86px); font-size: clamp(10px, 3vw, 15px); }
+  .services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .social-hub { align-self: start; }
+}
+@media (max-width: 400px) {
+  .bubble.bubble-script { max-width: calc(100% - 58px); }
+  .services { gap: 8px; padding: 10px 8px 15px; }
+  .services .service-card { padding: 10px 4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hello-wave { animation: none; }
+  .services .service-card, .social-link { transition: none; }
+}
+
+
+/* ========================================================================
+   SCHWWAAA MEMPHIS v1.7 — PRODUCTS MASTHEAD + DIRECTIVE REMIX
+   ======================================================================== */
+/* Products gets the same handwritten bubble and playful illustrated scene
+   used on Home, with its own floating product-channel pennant. */
+.catalog .masthead { background: linear-gradient(135deg, #CCCCFF 0%, #E3DEFF 42%, #C6FFF5 100%); }
+.catalog .splat { flex: 0 0 360px; }
+.catalog .visionary { flex: 0 0 150px; }
+.catalog .mast-crew { z-index: 1; }
+.catalog .bubble.bubble-script { z-index: 4; background: #FFFFFF; border-color: var(--ink); }
+.catalog .catalog-showtime {
+  position: absolute; z-index: 3; right: 75px; bottom: 9px;
+  display: flex; align-items: center; gap: 6px;
+  padding: 5px 10px; color: var(--ink); background: var(--pink);
+  border: 3px solid var(--ink); border-radius: 14px 5px 16px 7px;
+  box-shadow: 3px 3px 0 var(--ink); font: 900 10px/1 var(--f-head);
+  letter-spacing: .4px; transform: rotate(-5deg);
+  animation: catalog-sign-sway 4.3s ease-in-out infinite;
+  pointer-events: none;
+}
+.catalog .catalog-spark { color: #fff; font-size: 20px; animation: catalog-star 3s linear infinite; }
+.catalog .catalog-spark-alt { color: var(--peri); font-size: 17px; animation: catalog-star 5s linear infinite reverse; }
+@keyframes catalog-sign-sway { 50% { transform: translateY(-6px) rotate(3deg); } }
+@keyframes catalog-star { to { transform: rotate(360deg); } }
+/* Prioritize logo/help legibility before characters as screen gets tighter. */
+@media (max-width: 1150px) {
+  .catalog .mast-crew .crew-builder { display: none; }
+}
+@media (max-width: 900px) and (min-width: 761px) {
+  .catalog .splat { flex: 0 0 320px; width: 320px; }
+  .catalog .visionary { flex: 0 0 125px; width: 125px; }
+  .catalog .catalog-showtime { font-size: 9px; right: 58px; }
+}
+@media (max-width: 760px) {
+  .catalog .splat { flex: 0 1 100%; max-width: 340px; width: 100%; }
+  .catalog .visionary { flex: 0 0 100px; width: 100px; }
+  .catalog .mast-crew { flex: 0 0 145px; }
+  .catalog .bubble.bubble-script { left: 50%; top: 8px; max-width: calc(100% - 85px); }
+  .catalog .catalog-showtime { right: 55px; bottom: 2px; padding: 3px 6px; font-size: 8px; }
+  .catalog .catalog-spark, .catalog .catalog-spark-alt { font-size: 13px; }
+}
+@media (max-width: 400px) {
+  .catalog .mast-crew { flex: 0 0 112px; }
+  .catalog .mast-crew .crew-highfive { width: 112px; }
+  .catalog .catalog-showtime { right: 52px; font-size: 7px; }
+}
+
+/* The directive is now layered mint/lavender/coral lettering instead of a
+   yellow blob. All animation is decorative; the message is plain text. */
+.col-left > .sticky-remix {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: block; min-width: 0; padding: 12px 7px 17px;
+  color: var(--ink); text-align: left; background: #d9d3ff;
+  border: 3px solid var(--ink); border-radius: 22px 8px 25px 12px;
+  box-shadow: 5px 6px 0 var(--teal); transform: rotate(-1.5deg);
+  animation: directive-card-breathe 5s ease-in-out infinite;
+}
+.sticky-remix::before {
+  content: ''; position: absolute; z-index: -1;
+  width: 108px; height: 108px; right: -44px; top: 20px;
+  border: 12px solid var(--teal); border-radius: 50%;
+  animation: directive-ring 9s linear infinite;
+}
+.sticky-remix::after {
+  content: ''; position: absolute; z-index: -1;
+  width: 90px; height: 90px; left: -41px; bottom: -42px;
+  border-radius: 50%; background: #ffa8c9;
+  animation: directive-pulse 4.5s ease-in-out infinite;
+}
+.directive-header { display: flex; align-items: center; justify-content: space-between; gap: 3px; flex-wrap: wrap;
+  margin-bottom: 9px; font: 900 9px/1.2 var(--f-head); letter-spacing: .3px; }
+.directive-number { font: 900 8px/1.2 var(--f-mono); color: var(--peri); }
+.directive-words { display: flex; flex-direction: column; align-items: flex-start; gap: 5px; padding: 2px 0 8px; }
+.sticky-remix .directive-word { display: inline-block; max-width: 100%;
+  padding: 5px 8px 6px; border: 2px solid var(--ink);
+  font: 900 clamp(15px, 1.65vw, 21px)/1 var(--f-loud); white-space: nowrap;
+  box-shadow: 2px 3px 0 var(--ink); transform-origin: 12% 65%;
+}
+.directive-build { background: var(--teal); transform: rotate(-5deg); animation: directive-build-dance 3.2s ease-in-out infinite; }
+.directive-break { background: var(--coral); color: #fff; transform: translateX(15px) rotate(3deg); animation: directive-break-dance 2.8s ease-in-out infinite; }
+.directive-schwwaaa { background: var(--must); transform: rotate(-3deg); animation: directive-schwwaaa-dance 3.8s ease-in-out infinite; }
+.sticky-remix .directive-dot { color: var(--peri); }
+.directive-orbit { position: absolute; right: 8px; top: 54px; font-size: 33px; color: var(--coral); text-shadow: 1px 2px var(--ink); animation: directive-ring 7s linear infinite; }
+.directive-flower { position: absolute; right: 10px; bottom: 20px; font-size: 23px; color: var(--peri); animation: directive-ring 5s linear infinite reverse; }
+.sticky-remix small { position: relative; display: block; margin: 8px 0 0; padding: 6px 5px;
+  background: rgba(255,255,255,.79); border: 1px dashed var(--ink); border-radius: 5px;
+  font: 900 9px/1.35 var(--f-body); }
+@keyframes directive-card-breathe { 50% { transform: translateY(-3px) rotate(1.5deg); } }
+@keyframes directive-ring { to { rotate: 360deg; } }
+@keyframes directive-pulse { 50% { scale: 1.3; } }
+@keyframes directive-build-dance { 50% { transform: translateX(4px) rotate(3deg); } }
+@keyframes directive-break-dance { 50% { transform: translateX(9px) rotate(-4deg); } }
+@keyframes directive-schwwaaa-dance { 50% { transform: translateX(5px) rotate(4deg) scale(1.035); } }
+@media (max-width: 760px) {
+  .col-left > .sticky-remix { width: min(340px, calc(100% - 32px)); margin: 12px auto 16px; transform: none; }
+  .sticky-remix .directive-word { font-size: clamp(17px, 4.5vw, 23px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .catalog .catalog-showtime, .catalog .catalog-spark, .catalog .catalog-spark-alt,
+  .sticky-remix, .sticky-remix::before, .sticky-remix::after,
+  .sticky-remix .directive-word, .directive-orbit, .directive-flower { animation: none !important; }
+}
+/* Keep the long third line fully legible in the narrow left rail. */
+.sticky-remix .directive-schwwaaa { font-size: clamp(12px, 1.2vw, 15px); letter-spacing: -.45px; }
+@media (max-width: 760px) {
+  .sticky-remix .directive-schwwaaa { font-size: clamp(16px, 4.2vw, 19px); letter-spacing: -.35px; }
 }
