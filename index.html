@@ -88,27 +88,52 @@
 
     <!-- ============ MASTHEAD ============ -->
     <header class="masthead" id="top">
-      <svg class="abstract-stage home-stage" viewBox="0 0 1200 230" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
-  <!-- HOMEPAGE: asymmetrical cut-paper / motion, not a repeated card layout -->
-  <rect width="1200" height="230" fill="#eafff0"/>
-  <path d="M397 230 L585 118 L818 156 L1200 55 L1200 230Z" fill="#b9f3df"/>
-  <path d="M724 230 L849 94 L1040 138 L1200 78 L1200 230Z" fill="#8fe4dd"/>
-  <path d="M856 230 L999 92 L1163 139 L1200 118 L1200 230Z" fill="#ffd4e4"/>
-  <g class="drift-gentle">
-    <path d="M550 181 L590 118 L628 181 L666 116 L705 180 L744 117 L787 182" stroke="#333366" stroke-width="9" stroke-linejoin="miter" stroke-linecap="square" fill="none"/>
-    <path d="M550 191 L590 128 L628 191 L666 126 L705 190 L744 127 L787 192" stroke="#ff7478" stroke-width="6" stroke-linecap="square" fill="none"/>
-  </g>
-  <path d="M795 16 L900 32 L875 108 L755 94 Z" fill="#ffca50" stroke="#333366" stroke-width="5"/>
-  <path d="M814 36 L890 47 M808 53 L885 64 M801 70 L878 81" stroke="#333366" stroke-width="5" stroke-dasharray="11 10"/>
-  <path class="drift-slow" d="M1000 32 L1022 73 L1065 68 L1043 102 L1071 134 L1027 129 L1006 169 L995 124 L948 120 L983 92 L971 52Z" fill="#ff7a73" stroke="#333366" stroke-width="5" stroke-linejoin="round"/>
-  <path d="M1070 163 L1090 134 L1110 163 L1130 134 L1150 163 L1170 134 L1190 163" stroke="#333366" stroke-width="9" fill="none" stroke-linejoin="miter"/>
-  <g fill="#333366"><rect x="477" y="201" width="8" height="8"/><rect x="498" y="201" width="8" height="8"/><rect x="519" y="201" width="8" height="8"/><rect x="477" y="222" width="8" height="8"/><rect x="498" y="222" width="8" height="8"/><rect x="519" y="222" width="8" height="8"/></g>
-  <g fill="#6666ff"><path d="M1130 27 l9 17 19 0 -16 13 6 19 -18 -10 -18 10 6 -19 -16 -13 19 0Z"/><path d="M703 33 l8 10 12 -8 -7 14 11 9 -15 -3 -6 14 -3 -15 -14 -2 13 -7Z"/></g>
-</svg>
+      <!-- Animated paper-cut Memphis accents. Decorative only; keyboard safe. -->
+      <div class="mast-ornaments" aria-hidden="true">
+        <i class="ornament orbit-star"></i><i class="ornament hoop"></i>
+        <i class="ornament curl"></i><i class="ornament grid-dots"></i>
+        <i class="ornament halfmoon"></i><i class="ornament ziggy"></i>
+        <i class="ornament tiny-star"></i>
+      </div>
+      <svg class="deco" viewBox="0 0 780 190" preserveAspectRatio="none" aria-hidden="true">
+        <!-- Memphis confetti floating behind the masthead -->
+        <path d="M20 30 q10 -14 20 0 t20 0 t20 0" stroke="#6666FF" stroke-width="5" fill="none"
+          stroke-linecap="round" />
+        <polygon points="700,22 724,62 676,62" fill="#FF6666" />
+        <circle cx="742" cy="140" r="14" fill="none" stroke="#FFCC33" stroke-width="5" />
+        <path d="M600 170 l10 -12 l10 12 l10 -12 l10 12" stroke="#33CCCC" stroke-width="4" fill="none" />
+        <path d="M440 190 a40 40 0 0 1 80 0 Z" fill="#FF99CC" />
+        <g fill="#333366">
+          <circle cx="370" cy="20" r="3" />
+          <circle cx="382" cy="20" r="3" />
+          <circle cx="394" cy="20" r="3" />
+          <circle cx="370" cy="32" r="3" />
+          <circle cx="382" cy="32" r="3" />
+          <circle cx="394" cy="32" r="3" />
+        </g>
+        <path d="M30 150 h16 m-8 -8 v16" stroke="#FF6666" stroke-width="4" />
+      </svg>
       <a class="splat" href="index.html" aria-label="schwwaaa home">
+        <!-- the blob behind the logo: one smooth, lopsided closed curve -->
+        <svg viewBox="0 0 360 160" aria-hidden="true">
+          <path
+            d="M40 40 C70 0 170 10 220 18 C290 28 350 30 352 82 C354 132 290 150 210 148 C130 146 60 158 26 120 C4 96 16 64 40 40 Z"
+            fill="#FFCC33" stroke="#333366" stroke-width="4" />
+          <path d="M58 132 C100 150 180 140 240 138" stroke="#FF6666" stroke-width="6" fill="none"
+            stroke-linecap="round" />
+        </svg>
         <img src="assets/logo.png" alt="schwwaaa">
       </a>
       <div class="bubble bubble-script" aria-label="Shaping tomorrow ... today" lang="en">𝒮𝒽𝒶𝓅𝒾𝓃𝑔 𝓉𝑜𝓂𝑜𝓇𝓇𝑜𝓌 <span class="blink">...</span> 𝓉𝑜𝒹𝒶𝓎</div>
+      <div class="visionary"><img src="assets/people/visionary.svg" alt="" width="150"></div>
+      <!-- Two existing Corporate Memphis illustrations bring three more characters into
+           the space previously occupied by search; smaller screens show the high-five. -->
+      <div class="mast-crew" aria-hidden="true">
+        <img class="crew-highfive" src="assets/people/highfive.svg" alt="">
+        <img class="crew-builder" src="assets/people/builder.svg" alt="">
+      </div>
+
+      <!-- Search and masthead shortcuts retired; help sticker at bottom-right. -->
       <div class="mast-side">
         <a class="help-corner" href="construction.html?p=Help%20Desk" title="Help desk" aria-label="Help desk">?</a>
       </div>
@@ -300,15 +325,15 @@
                     class="ch"><span>CH01</span><span>&#9733;</span></span><span class="art"><img
                       src="assets/icons/videobeaux.png" alt=""></span><b>Videobeaux</b><i>Broadcast the unreal.</i><span
                     class="go">view project &raquo;</span></a>
-                <a class="card" href="https://schwwaaa.github.io/AdSlicer/"><span
+                <a class="card" href="https://adslicer.schwwaaa.net/"><span
                     class="ch"><span>CH02</span><span>&#9733;</span></span><span class="art"><img
                       src="assets/icons/adslicer.png" alt=""></span><b>AdSlicer</b><span class="go">view project
                     &raquo;</span></a>
-                <a class="card" href="https://schwwaaa.github.io/drop-zone-ops/"><span
+                <a class="card" href="https://dropzoneops.schwwaaa.net"><span
                     class="ch"><span>CH03</span><span>&#9733;</span></span><span class="art"><img
                       src="assets/icons/dropzoneops.png" alt=""></span><b>drop-zone-ops</b><span class="go">view project
                     &raquo;</span></a>
-                <a class="card" href="https://schwwaaa.github.io/huff"><span
+                <a class="card" href="https://huff.schwwaaa.net"><span
                     class="sticker">NEW</span><span
                     class="ch"><span>CH04</span><span>&#9733;</span></span><span class="art"><img
                       src="assets/icons/huff.png" alt=""></span><b>huff</b><span class="go">view project
@@ -317,11 +342,12 @@
                     class="ch"><span>CH05</span><span>&#9733;</span></span><span class="art"><img
                       src="assets/icons/rpi.png" alt=""></span><b>Raspi Composite Player</b><span class="go">view
                     project &raquo;</span></a>
-                <a class="card" href="https://schwwaaa.github.io/mastacraf/"><span
+                <a class="card" href="https://mastacraf.schwwaaa.net"><span
                     class="ch"><span>CH06</span><span>&#9733;</span></span><span class="art"><img
                       src="assets/icons/mastacraf.png" alt=""></span><b>mastacraf</b><span class="go">view project
                     &raquo;</span></a>
-                <a class="card" href="https://schwwaaa.github.io/VideoSampler10_VS10/"><span
+                <a class="card" href="https://vs10.schwwaaa.net"><span
+                    class="sticker">NEW</span><span
                     class="ch"><span>CH07</span><span>&#9733;</span></span><span class="art"><img
                       src="assets/icons/vs10.png" alt=""></span><b>VideoSampler10_VS10</b><span class="go">view project
                     &raquo;</span></a>
@@ -329,7 +355,7 @@
                     class="ch"><span>CH08</span><span>&#9733;</span></span><span class="art"><img
                       src="assets/icons/webglo.png" alt=""></span><b>Webglo</b><span class="go">view project
                     &raquo;</span></a>
-                <a class="card" href="https://schwwaaa.github.io/junkpile/"><span
+                <a class="card" href="https://junkpile.schwwaaa.net"><span
                     class="ch"><span>CH9</span><span>&#9733;</span></span><span class="art"><img
                       src="assets/icons/junkpile.png" alt=""></span><b>junkpile</b><span class="go">view project
                     &raquo;</span></a>                    
