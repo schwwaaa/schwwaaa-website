@@ -1613,30 +1613,33 @@ body.panic-fold .page { animation: sch-fold 1.7s ease-in-out both; transform-ori
 .catalog .masthead { background: #d6d4ff; }
 .build .masthead { background: #ffe5ef; }
 
-/* Logo artwork is transparent. Leave it unboxed, aligned LEFT on all pages. */
+/* Restore the original masthead logo placement and scale, while retaining
+   the transparent logo without the removed yellow SVG / orange underline. */
 .masthead > .splat {
-  position: absolute;
+  position: relative;
   z-index: 3;
-  left: 26px;
-  top: 104px;
-  width: clamp(240px, 28vw, 338px);
-  height: 86px;
-  margin: 0;
-  padding: 0;
   display: block;
+  flex: 0 0 360px;
+  left: auto;
+  top: auto;
+  width: 360px;
+  height: 160px;
+  padding: 0;
+  margin: 0 0 14px 0;
   transform: none;
 }
 .masthead > .splat > img {
-  position: static;
+  position: absolute;
+  left: 50%; top: 50%;
   display: block;
-  width: 100%;
+  width: 290px;
   height: auto;
   max-width: none;
-  transform: rotate(-3deg);
-  transform-origin: left center;
-  filter: drop-shadow(3px 3px 0 var(--ink)) drop-shadow(-2px -2px 0 var(--ink));
+  transform: translate(-50%, -52%) rotate(-5deg);
+  transform-origin: center;
+  filter: drop-shadow(4px 4px 0 var(--ink));
 }
-.masthead > .splat:hover > img { animation: none; transform: rotate(-3deg) translateY(-3px); }
+.masthead > .splat:hover > img { animation: boing .6s ease-in-out; }
 
 /* Exact shared slogan treatment; NO page-specific positioning differences. */
 .home .masthead .bubble.bubble-script,
@@ -1670,19 +1673,23 @@ body.panic-fold .page { animation: sch-fold 1.7s ease-in-out both; transform-ori
   .home .masthead .bubble.bubble-script,
   .catalog .masthead .bubble.bubble-script,
   .build .masthead .bubble.bubble-script { left: 61%; }
-  .masthead > .splat { width: 255px; left: 18px; top: 114px; }
+  .masthead > .splat { width: 360px; flex-basis: 360px; }
 }
 @media (max-width: 760px) {
   .home .masthead, .catalog .masthead, .build .masthead { min-height: 235px; }
   .masthead > .splat {
-    position: absolute;
-    top: 101px;
-    left: 16px;
-    width: min(69%, 295px);
-    height: auto;
-    margin: 0;
-    flex: none;
+    position: relative;
+    top: auto; left: auto;
+    flex: 0 0 min(100%, 340px);
+    width: min(100%, 340px);
+    height: 130px;
+    margin: 35px 0 0;
+    align-self: flex-start;
   }
+  .masthead > .splat > img {
+    width: min(250px, 80%);
+  }
+  .masthead { justify-content: flex-start; }
   .home .masthead .bubble.bubble-script,
   .catalog .masthead .bubble.bubble-script,
   .build .masthead .bubble.bubble-script {
