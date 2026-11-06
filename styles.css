@@ -77,7 +77,7 @@ body {
   color: var(--ink);
   font: 12px/1.5 var(--f-body);
 }
-body.catalog { background: var(--peach) url("assets/tile-catalog.png") repeat; }
+body.catalog { background: var(--cream) url("assets/tile-home.png") repeat; }
 body.build   { background: var(--ice)   url("assets/tile-build.png")   repeat; }
 
 a { color: var(--peri); font-weight: bold; }
@@ -759,15 +759,19 @@ body.glitch .page { animation: tracking .18s steps(3) infinite; }
 /* ========================================================================
    SCHWWAAA-MEMPHIS v1.1 — broadcast / signup / compact corner help
    ======================================================================== */
-.mast-side {
-  position: relative; z-index: 1; align-self: stretch;
-  min-width: 60px; flex: 1; margin-top: 0;
-  display: flex; justify-content: flex-end; align-items: flex-end;
-  padding: 0 4px 13px;
+/* Identical help control placement on Home and Projects: always in the
+   bottom-right corner of the masthead itself, never in a flex column. */
+.masthead > .mast-side {
+  position: absolute; z-index: 20;
+  right: 11px; bottom: 10px; top: auto; left: auto;
+  width: 42px; height: 42px; min-width: 0;
+  margin: 0; padding: 0; flex: none; align-self: auto;
+  display: flex; align-items: center; justify-content: center;
 }
+
 .help-corner {
   display: grid; place-items: center;
-  width: 43px; height: 43px;
+  width: 42px; height: 42px;
   border: 3px solid var(--ink);
   border-radius: 52% 48% 35% 65% / 48% 45% 55% 52%;
   background: var(--must); color: var(--ink) !important;
@@ -870,8 +874,6 @@ body.glitch .page { animation: tracking .18s steps(3) infinite; }
 .newsletter-stars { display: block; margin-top: 6px; color: var(--peri); text-align: center; letter-spacing: 10px; font-size: 18px; }
 
 @media (max-width: 760px) {
-  .mast-side { flex: 0 0 auto; order: 2; margin-left: auto; padding-right: 10px; min-height: 58px; }
-  .help-corner { width: 38px; height: 38px; font-size: 24px; }
   .bulletin-bar { min-height: 64px; gap: 8px; padding: 8px; }
   .bulletin-head { min-width: 0; padding: 8px; }
   .bulletin-label { font-size: 13px; }
@@ -924,7 +926,6 @@ a.bulletin-bar, a.bulletin-bar:visited, a.bulletin-bar:hover {
 @keyframes mast-highfive { 0%, 100% { transform: rotate(-2deg); } 50% { transform: translateY(-5px) rotate(2deg); } }
 @keyframes mast-builder  { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px) rotate(-2deg); } }
 .bubble { left: 62%; top: 12px; transform: translateX(-50%) rotate(3deg); }
-.mast-side { flex: 0 0 58px; min-width: 45px; }
 @media (max-width: 1150px) {
   .mast-crew .crew-builder { display: none; }
   .mast-crew { justify-content: center; }
@@ -944,7 +945,6 @@ a.bulletin-bar, a.bulletin-bar:visited, a.bulletin-bar:hover {
   .mast-crew { order: 4; flex: 0 0 150px; align-self: flex-end; padding: 0; margin: 0; }
   .mast-crew .crew-highfive { width: 145px; }
   .mast-crew .crew-builder { display: none; }
-  .mast-side { position: absolute; right: 5px; bottom: 0; order: 5; min-width: 0; width: 50px; padding: 0 4px 9px; }
   .bubble { left: 50%; top: 8px; transform: translateX(-50%) rotate(2deg); }
 }
 @media (max-width: 360px) {
@@ -1023,10 +1023,6 @@ a.bulletin-bar, a.bulletin-bar:visited, a.bulletin-bar:hover {
 @keyframes memphis-pop { 50% { transform: scale(1.26) translateY(4px); } }
 @keyframes memphis-wobble { to { transform: translateY(-7px) rotate(14deg); } }
 @keyframes memphis-float { 50% { transform: translateY(-10px) rotate(-7deg); } }
-/* Keep help consistently in the right corner of the LOGO PANEL on Products. */
-.catalog .mast-side { position: absolute; z-index: 6; right: 9px; bottom: 8px; top: auto; left: auto;
-  margin: 0; padding: 0; width: 45px; min-width: 0; height: 45px; display: flex; justify-content: flex-end; align-items: flex-end; }
-.catalog .help-corner { position: static; margin: 0; flex: 0 0 42px; }
 
 /* New idea widget: left of the actual directory, not repeated at the page bottom. */
 .rail-idea {
@@ -1068,7 +1064,6 @@ body.panic-fold .page { animation: sch-fold 1.7s ease-in-out both; transform-ori
   57% { transform: perspective(900px) rotateY(15deg) rotateX(-5deg) scale(.98); }
   80% { transform: perspective(900px) rotateY(-6deg) rotateX(4deg); } }
 @media (max-width: 760px) {
-  .catalog .mast-side { right: 9px; bottom: 8px; width: 42px; height: 42px; }
   .mast-ornaments .curl, .mast-ornaments .grid-dots { display: none; }
   .mast-ornaments .orbit-star { left: 2%; top: 32%; }
   .mast-ornaments .hoop { right: 13%; top: 23%; }
@@ -1268,53 +1263,6 @@ body.panic-fold .page { animation: sch-fold 1.7s ease-in-out both; transform-ori
 }
 
 
-/* ========================================================================
-   SCHWWAAA MEMPHIS v1.7 — PRODUCTS MASTHEAD + DIRECTIVE REMIX
-   ======================================================================== */
-/* Products gets the same handwritten bubble and playful illustrated scene
-   used on Home, with its own floating product-channel pennant. */
-.catalog .masthead { background: linear-gradient(135deg, #CCCCFF 0%, #E3DEFF 42%, #C6FFF5 100%); }
-.catalog .splat { flex: 0 0 360px; }
-.catalog .visionary { flex: 0 0 150px; }
-.catalog .mast-crew { z-index: 1; }
-.catalog .bubble.bubble-script { z-index: 4; background: #FFFFFF; border-color: var(--ink); }
-.catalog .catalog-showtime {
-  position: absolute; z-index: 3; right: 75px; bottom: 9px;
-  display: flex; align-items: center; gap: 6px;
-  padding: 5px 10px; color: var(--ink); background: var(--pink);
-  border: 3px solid var(--ink); border-radius: 14px 5px 16px 7px;
-  box-shadow: 3px 3px 0 var(--ink); font: 900 10px/1 var(--f-head);
-  letter-spacing: .4px; transform: rotate(-5deg);
-  animation: catalog-sign-sway 4.3s ease-in-out infinite;
-  pointer-events: none;
-}
-.catalog .catalog-spark { color: #fff; font-size: 20px; animation: catalog-star 3s linear infinite; }
-.catalog .catalog-spark-alt { color: var(--peri); font-size: 17px; animation: catalog-star 5s linear infinite reverse; }
-@keyframes catalog-sign-sway { 50% { transform: translateY(-6px) rotate(3deg); } }
-@keyframes catalog-star { to { transform: rotate(360deg); } }
-/* Prioritize logo/help legibility before characters as screen gets tighter. */
-@media (max-width: 1150px) {
-  .catalog .mast-crew .crew-builder { display: none; }
-}
-@media (max-width: 900px) and (min-width: 761px) {
-  .catalog .splat { flex: 0 0 320px; width: 320px; }
-  .catalog .visionary { flex: 0 0 125px; width: 125px; }
-  .catalog .catalog-showtime { font-size: 9px; right: 58px; }
-}
-@media (max-width: 760px) {
-  .catalog .splat { flex: 0 1 100%; max-width: 340px; width: 100%; }
-  .catalog .visionary { flex: 0 0 100px; width: 100px; }
-  .catalog .mast-crew { flex: 0 0 145px; }
-  .catalog .bubble.bubble-script { left: 50%; top: 8px; max-width: calc(100% - 85px); }
-  .catalog .catalog-showtime { right: 55px; bottom: 2px; padding: 3px 6px; font-size: 8px; }
-  .catalog .catalog-spark, .catalog .catalog-spark-alt { font-size: 13px; }
-}
-@media (max-width: 400px) {
-  .catalog .mast-crew { flex: 0 0 112px; }
-  .catalog .mast-crew .crew-highfive { width: 112px; }
-  .catalog .catalog-showtime { right: 52px; font-size: 7px; }
-}
-
 /* The directive is now layered mint/lavender/coral lettering instead of a
    yellow blob. All animation is decorative; the message is plain text. */
 .col-left > .sticky-remix {
@@ -1366,7 +1314,6 @@ body.panic-fold .page { animation: sch-fold 1.7s ease-in-out both; transform-ori
   .sticky-remix .directive-word { font-size: clamp(17px, 4.5vw, 23px); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .catalog .catalog-showtime, .catalog .catalog-spark, .catalog .catalog-spark-alt,
   .sticky-remix, .sticky-remix::before, .sticky-remix::after,
   .sticky-remix .directive-word, .directive-orbit, .directive-flower { animation: none !important; }
 }
@@ -1374,4 +1321,232 @@ body.panic-fold .page { animation: sch-fold 1.7s ease-in-out both; transform-ori
 .sticky-remix .directive-schwwaaa { font-size: clamp(12px, 1.2vw, 15px); letter-spacing: -.45px; }
 @media (max-width: 760px) {
   .sticky-remix .directive-schwwaaa { font-size: clamp(16px, 4.2vw, 19px); letter-spacing: -.35px; }
+}
+
+/* Newsletter moved below Become a Member (left rail). Distinct non-yellow panel. */
+.col-left .rail-extras > .newsletter {
+  min-width: 0;
+  margin: 10px 8px 18px;
+  padding: 13px 9px 15px;
+  background-color: var(--ice);
+  background-image: repeating-linear-gradient(135deg,
+    rgba(51, 204, 204, 0.22) 0 10px,
+    rgba(255, 255, 255, 0.5) 10px 20px);
+  transform: none;
+}
+.col-left .newsletter h2 { font-size: 19px; overflow-wrap: anywhere; }
+.col-left .newsletter .newsletter-confetti { letter-spacing: 4px; }
+.col-left .newsletter .newsletter-stamp { font-size: 8px; }
+@media (max-width: 760px) {
+  .col-left .rail-extras > .newsletter {
+    grid-column: 1 / -1;
+    width: min(340px, calc(100% - 16px));
+    margin: 8px auto 16px;
+  }
+  .col-left .newsletter h2 { font-size: 24px; }
+}
+
+/* ========================================================================
+   Projects-only masthead illustration. Home is intentionally unchanged.
+   Animated project-window collage made from existing artwork, no new labels.
+   The cream tiled OUTER background remains identical on both pages.
+   ======================================================================== */
+.catalog .masthead {
+  isolation: isolate;
+  background: var(--peri-l);
+}
+.catalog .masthead::before {
+  content: ""; position: absolute; z-index: 0;
+  right: -10%; bottom: -160px; width: 66%; height: 310px;
+  background: var(--teal); border: 4px solid var(--ink);
+  border-radius: 50% 45% 0 0; transform: rotate(-14deg);
+  pointer-events: none;
+}
+.catalog .masthead::after {
+  content: ""; position: absolute; z-index: 0;
+  right: 3%; top: -58px; width: 195px; height: 92px;
+  border: 11px solid var(--coral); border-radius: 50%; transform: rotate(-23deg);
+  pointer-events: none;
+}
+.catalog .bubble.bubble-script {
+  top: 11px; left: 58%;
+  background: var(--cream);
+  transform: translateX(-50%) rotate(-3deg);
+  box-shadow: 5px 5px 0 var(--coral);
+}
+.catalog-art {
+  position: absolute; z-index: 2; right: 63px; bottom: -7px;
+  width: min(45%, 440px); height: 168px;
+  pointer-events: none;
+}
+.catalog-orbit { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.catalog-window {
+  position: absolute; display: flex; flex-direction: column; align-items: center;
+  width: 124px; height: 120px; padding: 5px 7px 7px;
+  border: 4px solid var(--ink); border-radius: 10px 10px 19px 7px;
+  box-shadow: 6px 7px 0 var(--ink); overflow: hidden;
+  transform-origin: 50% 80%;
+}
+.catalog-window .cw-chrome { width: 100%; display: flex; gap: 4px; align-items: center; height: 14px;
+  border-bottom: 3px solid var(--ink); padding-bottom: 4px; }
+.catalog-window .cw-chrome i { width: 6px; height: 6px; border-radius: 50%; background: var(--ink); }
+.catalog-window img { display: block; width: 83%; height: 81px; object-fit: contain; }
+.catalog-window.cw-one { left: 5%; top: 32px; background: var(--must); transform: rotate(-17deg); animation: catalog-float-one 3.7s ease-in-out infinite; }
+.catalog-window.cw-two { left: 34%; top: 3px; background: var(--paper); transform: rotate(6deg); animation: catalog-float-two 4.4s ease-in-out infinite; }
+.catalog-window.cw-three { right: 0; top: 36px; background: var(--pink); transform: rotate(16deg); animation: catalog-float-three 4.1s ease-in-out infinite; }
+.catalog-pop { position: absolute; display: block; }
+.catalog-pop-star { top: 6px; left: 3%; width: 30px; height: 30px; background: var(--coral);
+  clip-path: polygon(50% 0, 64% 35%, 100% 50%, 64% 65%, 50% 100%, 36% 65%, 0 50%, 36% 35%);
+  animation: memphis-spin 7s linear infinite; }
+.catalog-pop-ring { width: 39px; height: 39px; border: 8px solid var(--must); border-radius: 50%;
+  right: -4%; bottom: 12px; animation: memphis-pop 3s ease-in-out infinite; }
+@keyframes catalog-float-one { 50% { transform: translateY(-9px) rotate(-11deg); } }
+@keyframes catalog-float-two { 50% { transform: translateY(8px) rotate(11deg); } }
+@keyframes catalog-float-three { 50% { transform: translateY(-11px) rotate(9deg); } }
+@media (max-width: 900px) and (min-width: 761px) {
+  .catalog-art { width: 40%; right: 58px; }
+  .catalog-window { width: 96px; height: 102px; }
+  .catalog-window img { height: 66px; }
+  .catalog .bubble.bubble-script { left: 63%; }
+}
+@media (max-width: 760px) {
+  .catalog .masthead { min-height: 252px; }
+  .catalog .masthead::before { width: 86%; height: 230px; bottom: -142px; }
+  .catalog .masthead::after { width: 100px; height: 54px; right: -18px; top: -40px; }
+  .catalog .splat { margin: 32px auto 85px; }
+  .catalog .visionary { display: none; }
+  .catalog .bubble.bubble-script { top: 7px; left: 50%; }
+  .catalog-art { width: min(70%, 275px); height: 104px; right: 58px; bottom: 6px; }
+  .catalog-window { width: 83px; height: 80px; padding: 3px 4px; border-width: 3px; box-shadow: 3px 4px 0 var(--ink); }
+  .catalog-window .cw-chrome { height: 11px; gap: 3px; border-bottom-width: 2px; }
+  .catalog-window .cw-chrome i { width: 4px; height: 4px; }
+  .catalog-window img { height: 54px; }
+  .catalog-window.cw-one { top: 15px; }
+  .catalog-window.cw-two { top: 0; }
+  .catalog-window.cw-three { top: 17px; }
+  .catalog-pop-ring { width: 23px; height: 23px; border-width: 5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .catalog-window, .catalog-pop { animation: none !important; }
+}
+
+
+/* ========================================================================
+   Banner reset: abstract-shapes-only banners.
+   Requirement: identical “Shaping tomorrow ... today” treatment on Home,
+   Projects, and Contact; banner art itself is completely different per page.
+   ======================================================================== */
+.home .bubble.bubble-script,
+.catalog .bubble.bubble-script,
+.build .bubble.bubble-script {
+  top: 11px;
+  left: 58%;
+  background: var(--cream);
+  transform: translateX(-50%) rotate(-3deg);
+  box-shadow: 5px 5px 0 var(--coral);
+}
+
+.banner-art {
+  position: absolute;
+  z-index: 2;
+  right: 60px;
+  bottom: 8px;
+  width: min(45%, 430px);
+  height: 154px;
+  pointer-events: none;
+}
+.banner-art .shape { position: absolute; display: block; }
+
+/* Home: soft blobs + playful doodles */
+.home .masthead { isolation: isolate; }
+.home .masthead::before {
+  content: ""; position: absolute; z-index: 0; right: -4%; bottom: -104px;
+  width: 47%; height: 214px; background: #bff6ea; border: 4px solid var(--ink);
+  border-radius: 56% 44% 0 0; transform: rotate(-10deg);
+}
+.home .masthead::after {
+  content: ""; position: absolute; z-index: 0; right: 14%; top: -26px;
+  width: 148px; height: 72px; background: none; border: 10px solid #ff9dc5;
+  border-radius: 50%; transform: rotate(-18deg);
+}
+.home-abstract .home-blob-a { left: 12px; top: 34px; width: 148px; height: 88px; background: #ffb8d2; border: 4px solid var(--ink); border-radius: 58% 42% 53% 47%/45% 62% 38% 55%; }
+.home-abstract .home-blob-b { left: 134px; top: 2px; width: 130px; height: 78px; background: #9ce8ff; border: 4px solid var(--ink); border-radius: 42% 58% 49% 51%/58% 38% 62% 42%; }
+.home-abstract .home-zig { left: 258px; top: 54px; width: 116px; height: 34px; border-top: 8px solid #ff6b5f; border-bottom: 8px solid transparent; clip-path: polygon(0 54%,10% 0,20% 54%,30% 0,40% 54%,50% 0,60% 54%,70% 0,80% 54%,90% 0,100% 54%,100% 100%,0 100%); }
+.home-abstract .home-dots { left: 206px; top: 0; width: 86px; height: 54px; background-image: radial-gradient(var(--ink) 2px, transparent 2px); background-size: 16px 16px; opacity: .9; }
+.home-abstract .home-ring { left: 312px; top: 4px; width: 58px; height: 58px; border: 10px solid #ffe45e; border-radius: 50%; }
+.home-abstract .home-spark { left: 84px; top: 108px; width: 44px; height: 44px; background: #33cccc; clip-path: polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%); }
+
+/* Projects: angular cut-paper collage */
+.catalog .masthead { isolation: isolate; background: var(--peri-l); }
+.catalog .masthead::before {
+  content: ""; position: absolute; z-index: 0; right: -6%; bottom: -118px;
+  width: 50%; height: 228px; background: #8ae1cf; border: 4px solid var(--ink);
+  transform: skewX(-18deg) rotate(-8deg); border-radius: 18px 0 0 0;
+}
+.catalog .masthead::after {
+  content: ""; position: absolute; z-index: 0; right: 10%; top: -16px;
+  width: 160px; height: 70px; background: linear-gradient(90deg,#ff7d66 0 33%,#ffd34d 33% 66%,#6666ff 66% 100%);
+  border: 4px solid var(--ink); transform: rotate(-8deg); border-radius: 18px;
+}
+.projects-abstract .proj-cut-a { left: 6px; top: 54px; width: 112px; height: 76px; background: #ffd34d; border: 4px solid var(--ink); clip-path: polygon(0 21%,82% 0,100% 85%,15% 100%); }
+.projects-abstract .proj-cut-b { left: 108px; top: 14px; width: 138px; height: 74px; background: #ff7cb2; border: 4px solid var(--ink); clip-path: polygon(0 18%,100% 0,84% 100%,14% 82%); }
+.projects-abstract .proj-stairs { left: 252px; top: 62px; width: 118px; height: 70px; background: linear-gradient(90deg,#6666ff 0 25%,#fff 25% 50%,#6666ff 50% 75%,#fff 75% 100%); border: 4px solid var(--ink); clip-path: polygon(0 100%,0 75%,25% 75%,25% 50%,50% 50%,50% 25%,75% 25%,75% 0,100% 0,100% 100%); }
+.projects-abstract .proj-starburst { left: 316px; top: 0; width: 62px; height: 62px; background: #33cccc; clip-path: polygon(50% 0,61% 24%,84% 6%,76% 29%,100% 29%,79% 45%,97% 61%,71% 63%,77% 90%,54% 72%,39% 100%,33% 75%,9% 87%,17% 63%,0 50%,20% 43%,8% 18%,31% 26%); }
+.projects-abstract .proj-dash-arc { left: 184px; top: 96px; width: 112px; height: 42px; border: 5px dashed #333366; border-color: #333366 transparent transparent transparent; border-radius: 50%/100% 100% 0 0; transform: rotate(-9deg); }
+.projects-abstract .proj-chip { left: 20px; top: 0; width: 72px; height: 44px; background-image: linear-gradient(90deg,var(--ink) 0 6px,transparent 6px 18px,var(--ink) 18px 24px,transparent 24px 36px,var(--ink) 36px 42px,transparent 42px 54px,var(--ink) 54px 60px,transparent 60px 72px), linear-gradient(var(--must),var(--must)); border: 4px solid var(--ink); border-radius: 12px; }
+
+/* Contact: ribbons, pills, concentric targets */
+.build .masthead { isolation: isolate; background: #eadbff; }
+.build .masthead::before {
+  content: ""; position: absolute; z-index: 0; right: -8%; bottom: -92px;
+  width: 52%; height: 210px; background: #ffc6db; border: 4px solid var(--ink);
+  border-radius: 64% 36% 0 0; transform: rotate(-7deg);
+}
+.build .masthead::after {
+  content: ""; position: absolute; z-index: 0; right: 8%; top: -12px;
+  width: 166px; height: 60px; background: repeating-linear-gradient(135deg,#fff 0 14px,#b9f3ec 14px 28px,#fff 28px 42px,#ffd24f 42px 56px); border: 4px solid var(--ink); border-radius: 999px; transform: rotate(-12deg);
+}
+.contact-abstract .contact-wave { left: 4px; top: 62px; width: 164px; height: 48px; background: none; border-top: 8px solid #33cccc; border-bottom: 8px solid #ff7caa; border-radius: 40px; transform: rotate(-8deg); }
+.contact-abstract .contact-pill-a { left: 156px; top: 12px; width: 110px; height: 44px; background: #fff08c; border: 4px solid var(--ink); border-radius: 999px; transform: rotate(12deg); }
+.contact-abstract .contact-pill-b { left: 236px; top: 78px; width: 126px; height: 38px; background: #8fe9ff; border: 4px solid var(--ink); border-radius: 999px; transform: rotate(-10deg); }
+.contact-abstract .contact-target { left: 292px; top: 4px; width: 74px; height: 74px; background: radial-gradient(circle at center,#ff6666 0 10px,#fff 10px 22px,#6666ff 22px 36px,transparent 36px); border: 4px solid var(--ink); border-radius: 50%; }
+.contact-abstract .contact-squig { left: 104px; top: 96px; width: 116px; height: 22px; background: repeating-linear-gradient(90deg,transparent 0 10px,#333366 10px 20px); clip-path: polygon(0 60%,10% 0,20% 60%,30% 0,40% 60%,50% 0,60% 60%,70% 0,80% 60%,90% 0,100% 60%,100% 100%,0 100%); }
+.contact-abstract .contact-spark { left: 30px; top: 12px; width: 48px; height: 48px; background: #ff6666; clip-path: polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%); }
+
+@media (max-width: 900px) and (min-width: 761px) {
+  .banner-art { width: 39%; right: 58px; }
+  .home .bubble.bubble-script,
+  .catalog .bubble.bubble-script,
+  .build .bubble.bubble-script { left: 63%; }
+}
+@media (max-width: 760px) {
+  .home .masthead, .catalog .masthead, .build .masthead { min-height: 252px; }
+  .home .splat, .catalog .splat, .build .splat { margin: 32px auto 85px; }
+  .home .visionary, .catalog .visionary, .build .visionary { display: none; }
+  .home .bubble.bubble-script,
+  .catalog .bubble.bubble-script,
+  .build .bubble.bubble-script { top: 7px; left: 50%; }
+  .banner-art { width: min(70%, 275px); height: 104px; right: 58px; bottom: 6px; }
+  .home .masthead::before { width: 80%; height: 192px; bottom: -120px; }
+  .catalog .masthead::before { width: 82%; height: 200px; bottom: -124px; }
+  .build .masthead::before { width: 84%; height: 196px; bottom: -118px; }
+  .home .masthead::after, .catalog .masthead::after, .build .masthead::after { width: 100px; height: 52px; right: -10px; top: -30px; border-width: 6px; }
+  .home-abstract .home-blob-a { width: 90px; height: 50px; left: 10px; top: 34px; border-width: 3px; }
+  .home-abstract .home-blob-b { width: 82px; height: 46px; left: 86px; top: 10px; border-width: 3px; }
+  .home-abstract .home-zig { left: 176px; top: 52px; width: 72px; height: 20px; border-top-width: 6px; }
+  .home-abstract .home-dots { left: 158px; top: 8px; width: 52px; height: 32px; background-size: 12px 12px; }
+  .home-abstract .home-ring { left: 214px; top: 8px; width: 34px; height: 34px; border-width: 7px; }
+  .home-abstract .home-spark { left: 56px; top: 74px; width: 30px; height: 30px; }
+  .projects-abstract .proj-cut-a { width: 72px; height: 46px; left: 4px; top: 44px; border-width: 3px; }
+  .projects-abstract .proj-cut-b { width: 84px; height: 44px; left: 72px; top: 16px; border-width: 3px; }
+  .projects-abstract .proj-stairs { width: 74px; height: 42px; left: 170px; top: 50px; border-width: 3px; }
+  .projects-abstract .proj-starburst { width: 40px; height: 40px; left: 216px; top: 6px; }
+  .projects-abstract .proj-dash-arc { width: 78px; height: 28px; left: 116px; top: 76px; border-width: 4px; }
+  .projects-abstract .proj-chip { width: 48px; height: 28px; left: 12px; top: 6px; border-width: 3px; }
+  .contact-abstract .contact-wave { width: 96px; height: 28px; left: 6px; top: 50px; border-top-width: 6px; border-bottom-width: 6px; }
+  .contact-abstract .contact-pill-a { width: 72px; height: 28px; left: 98px; top: 18px; border-width: 3px; }
+  .contact-abstract .contact-pill-b { width: 84px; height: 25px; left: 148px; top: 60px; border-width: 3px; }
+  .contact-abstract .contact-target { width: 44px; height: 44px; left: 214px; top: 8px; border-width: 3px; background: radial-gradient(circle at center,#ff6666 0 6px,#fff 6px 14px,#6666ff 14px 22px,transparent 22px); }
+  .contact-abstract .contact-squig { width: 74px; height: 16px; left: 82px; top: 76px; }
+  .contact-abstract .contact-spark { width: 30px; height: 30px; left: 18px; top: 14px; }
 }

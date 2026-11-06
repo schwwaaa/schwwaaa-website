@@ -126,11 +126,13 @@
       </a>
       <div class="bubble bubble-script" aria-label="Shaping tomorrow ... today" lang="en">𝒮𝒽𝒶𝓅𝒾𝓃𝑔 𝓉𝑜𝓂𝑜𝓇𝓇𝑜𝓌 <span class="blink">...</span> 𝓉𝑜𝒹𝒶𝓎</div>
       <div class="visionary"><img src="assets/people/visionary.svg" alt="" width="150"></div>
-      <!-- Two existing Corporate Memphis illustrations bring three more characters into
-           the space previously occupied by search; smaller screens show the high-five. -->
-      <div class="mast-crew" aria-hidden="true">
-        <img class="crew-highfive" src="assets/people/highfive.svg" alt="">
-        <img class="crew-builder" src="assets/people/builder.svg" alt="">
+      <div class="banner-art home-abstract" aria-hidden="true">
+        <span class="shape home-blob-a"></span>
+        <span class="shape home-blob-b"></span>
+        <span class="shape home-zig"></span>
+        <span class="shape home-dots"></span>
+        <span class="shape home-ring"></span>
+        <span class="shape home-spark"></span>
       </div>
 
       <!-- Search and masthead shortcuts retired; help sticker at bottom-right. -->
@@ -144,7 +146,7 @@
       <a href="index.html" aria-current="page">Home</a>
       <a href="projects.html">Products</a>
       <a href="https://live.schwwaaa.net" target="_blank" rel="noopener noreferrer">Live</a>
-      <a href="#pressroom">Press</a>
+      <!-- <a href="#pressroom">Press</a> -->
       <a href="construction.html?p=Contact">Contact</a>
     </nav>
 
@@ -203,6 +205,22 @@
               <b>GUEST</b>
               <button class="bevel member-trigger" type="button" aria-haspopup="dialog" aria-controls="membership-modal">BECOME A MEMBER</button>
             </div>
+
+          <section class="newsletter" aria-labelledby="newsletter-title">
+            <span class="newsletter-confetti" aria-hidden="true">&#10022; &#9679; &#9650;</span>
+            <span class="newsletter-stamp">TRANSMISSION LIST!</span>
+            <h2 id="newsletter-title">get the<br><span>schwwaaa</span><br>newsletter!</h2>
+            <p>New projects, odd transmissions, live broadcasts &amp; events. Straight to your inbox.</p>
+            <!-- Connect signup in site-config.js; no email is saved until then. -->
+            <form id="newsletter-form" method="post">
+              <label for="newsletter-email">YOUR EMAIL ADDRESS</label>
+              <input id="newsletter-email" type="email" name="email" autocomplete="email"
+                placeholder="you@the-internet.com" required>
+              <button class="newsletter-button" type="submit" disabled>COUNT ME IN! &#10138;</button>
+              <p class="newsletter-note" id="newsletter-note" aria-live="polite">Signup connection coming soon.</p>
+            </form>
+            <span class="newsletter-stars" aria-hidden="true">&#9733; &#9734; &#9733;</span>
+          </section>
 
             <div class="rail-box">
               <h3>days since corporate dreams began</h3>
@@ -278,22 +296,6 @@
               </div>
               <div class="knobs"><span class="chnum">CH 01</span><span class="dots"></span><span class="vol">VOL<i
                     class="knob"></i><i class="knob"></i></span></div>
-            </section>
-
-            <section class="box what-we-do" id="services" aria-labelledby="svc-title">
-              <h2 id="svc-title"><span class="ico">&#9733;</span> what we do <span class="service-title-spark" aria-hidden="true">✦ ▲ ✳</span></h2>
-              <p class="service-intro">From cameras and live shows to code and impossible prototypes: we make ideas real, weird, and useful.</p>
-              <div class="services">
-                <div class="service-card"><img src="assets/svc/service-video-production.svg" alt=""><strong>Video production</strong><small>From first frame to final cut.</small></div>
-                <div class="service-card"><img src="assets/svc/service-live-production.svg" alt=""><strong>Live production</strong><small>Events, streams &amp; broadcasts.</small></div>
-                <div class="service-card"><img src="assets/svc/service-post-production.svg" alt=""><strong>Post-production</strong><small>Editing, motion &amp; finishing.</small></div>
-                <div class="service-card"><img src="assets/svc/service-experiential-media.svg" alt=""><strong>Experiential media</strong><small>Installations &amp; strange screens.</small></div>
-                <div class="service-card"><img src="assets/svc/service-solution-architecting.svg" alt=""><strong>Solution architecting</strong><small>Plan a wild idea properly.</small></div>
-                <div class="service-card"><img src="assets/svc/service-system-auditing.svg" alt=""><strong>System auditing</strong><small>Find what's working. Or not.</small></div>
-                <div class="service-card"><img src="assets/svc/service-software-development.svg" alt=""><strong>Software development</strong><small>Tools, apps &amp; creative systems.</small></div>
-                <div class="service-card"><img src="assets/svc/service-prototyping.svg" alt=""><strong>Prototyping</strong><small>Make it. Test it. Make it again.</small></div>
-                <img class="hand" src="assets/people/hand.svg" alt="">
-              </div>
             </section>
 
             <!-- PROJECT CATALOG — all 17. Template for a new card:
@@ -380,6 +382,22 @@
                     the margin? Bring it.</i><span class="go">talk to the help desk</span></a> -->
               </div>
             </section>
+            
+            <section class="box what-we-do" id="services" aria-labelledby="svc-title">
+              <h2 id="svc-title"><span class="ico">&#9733;</span> what we do <span class="service-title-spark" aria-hidden="true">✦ ▲ ✳</span></h2>
+              <p class="service-intro">From cameras and live shows to code and impossible prototypes: we make ideas real, weird, and useful.</p>
+              <div class="services">
+                <div class="service-card"><img src="assets/svc/service-video-production.svg" alt=""><strong>Video production</strong><small>From first frame to final cut.</small></div>
+                <div class="service-card"><img src="assets/svc/service-live-production.svg" alt=""><strong>Live production</strong><small>Events, streams &amp; broadcasts.</small></div>
+                <div class="service-card"><img src="assets/svc/service-post-production.svg" alt=""><strong>Post-production</strong><small>Editing, motion &amp; finishing.</small></div>
+                <div class="service-card"><img src="assets/svc/service-experiential-media.svg" alt=""><strong>Experiential media</strong><small>Installations &amp; strange screens.</small></div>
+                <div class="service-card"><img src="assets/svc/service-solution-architecting.svg" alt=""><strong>Solution architecting</strong><small>Plan a wild idea properly.</small></div>
+                <div class="service-card"><img src="assets/svc/service-system-auditing.svg" alt=""><strong>System auditing</strong><small>Find what's working. Or not.</small></div>
+                <div class="service-card"><img src="assets/svc/service-software-development.svg" alt=""><strong>Software development</strong><small>Tools, apps &amp; creative systems.</small></div>
+                <div class="service-card"><img src="assets/svc/service-prototyping.svg" alt=""><strong>Prototyping</strong><small>Make it. Test it. Make it again.</small></div>
+                <img class="hand" src="assets/people/hand.svg" alt="">
+              </div>
+            </section>
 
           </main>
         </td>
@@ -450,21 +468,6 @@
             <a class="play-btn" href="https://schwwaaa.github.io/illogica-factory">ENTER &rarr;</a>
           </section>
 
-          <section class="newsletter" aria-labelledby="newsletter-title">
-            <span class="newsletter-confetti" aria-hidden="true">&#10022; &#9679; &#9650;</span>
-            <span class="newsletter-stamp">TRANSMISSION LIST!</span>
-            <h2 id="newsletter-title">get the<br><span>schwwaaa</span><br>newsletter!</h2>
-            <p>New projects, odd transmissions, live broadcasts &amp; events. Straight to your inbox.</p>
-            <!-- Connect signup in site-config.js; no email is saved until then. -->
-            <form id="newsletter-form" method="post">
-              <label for="newsletter-email">YOUR EMAIL ADDRESS</label>
-              <input id="newsletter-email" type="email" name="email" autocomplete="email"
-                placeholder="you@the-internet.com" required>
-              <button class="newsletter-button" type="submit" disabled>COUNT ME IN! &#10138;</button>
-              <p class="newsletter-note" id="newsletter-note" aria-live="polite">Signup connection coming soon.</p>
-            </form>
-            <span class="newsletter-stars" aria-hidden="true">&#9733; &#9734; &#9733;</span>
-          </section>
 
           <!-- COMING SOON TO THE CAMPUS temporarily disabled; retained for review
         <section class="soonbox" aria-labelledby="soon-title">
