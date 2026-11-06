@@ -1550,3 +1550,145 @@ body.panic-fold .page { animation: sch-fold 1.7s ease-in-out both; transform-ori
   .contact-abstract .contact-squig { width: 74px; height: 16px; left: 82px; top: 76px; }
   .contact-abstract .contact-spark { width: 30px; height: 30px; left: 18px; top: 14px; }
 }
+
+
+/* Banner correction: unique abstract-only artwork, no characters or floating cards.
+   The identical unboxed slogan is intentionally the single shared treatment. */
+.home .masthead, .catalog .masthead, .build .masthead {
+  isolation: isolate; min-height: 215px; align-items: flex-end;
+  overflow: hidden;
+}
+.home .masthead { background: #ecfff2; }
+.catalog .masthead { background: #d6d4ff; }
+.build .masthead { background: #ffe5ef; }
+.home .masthead::before, .home .masthead::after,
+.catalog .masthead::before, .catalog .masthead::after,
+.build .masthead::before, .build .masthead::after { content:none !important; }
+.abstract-stage {
+  position:absolute; inset:0; z-index:0;
+  height:100%; width:100%; pointer-events:none;
+}
+.masthead .splat { z-index:2; flex:none; }
+.masthead .bubble.bubble-script {
+  position:absolute; z-index:3;
+  left:58%; top:15px; padding:0;
+  transform:translateX(-50%) rotate(-3deg);
+  background:transparent; border:0; border-radius:0; box-shadow:none;
+  text-shadow: 2px 2px 0 rgba(255,255,255,.9), 4px 4px 0 rgba(255,255,255,.55);
+  color:var(--ink);
+}
+.masthead .bubble.bubble-script::after { display:none; }
+.masthead .help-corner { z-index:5; }
+.abstract-stage .drift-gentle { animation: abstract-drift 6s ease-in-out infinite; }
+.abstract-stage .drift-slow { animation: abstract-drift 8s ease-in-out infinite reverse; }
+.abstract-stage .shape-shear { animation: abstract-shear 5.5s ease-in-out infinite; }
+.abstract-stage .orbit-pulse { animation: abstract-pulse 5s ease-in-out infinite; }
+@keyframes abstract-drift { 50% { transform:translate(4px,-6px) rotate(1deg); } }
+@keyframes abstract-shear { 50% { transform:translate(0,7px) rotate(-1deg); } }
+@keyframes abstract-pulse { 50% { stroke-width:10px; opacity:.75; } }
+@media (max-width:760px) {
+  .home .masthead, .catalog .masthead, .build .masthead { min-height:235px; }
+  .home .splat, .catalog .splat, .build .splat { margin:46px auto 20px; }
+  .masthead .bubble.bubble-script { left:50%; top:5px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .abstract-stage .drift-gentle, .abstract-stage .drift-slow,
+  .abstract-stage .shape-shear, .abstract-stage .orbit-pulse { animation:none !important; }
+}
+
+
+/* ========================================================================
+   November 2026 | abstract masthead correction. All pages use different
+   motif compositions. The identical script slogan PILL is retained across
+   all pages, with its cream face, dark outline and coral offset shadow.
+   No yellow oval or orange underline behind the logo.
+   ======================================================================== */
+.home .masthead, .catalog .masthead, .build .masthead {
+  min-height: 217px;
+  isolation: isolate;
+  position: relative;
+  overflow: hidden;
+}
+.home .masthead { background: #eafff0; }
+.catalog .masthead { background: #d6d4ff; }
+.build .masthead { background: #ffe5ef; }
+
+/* Logo artwork is transparent. Leave it unboxed, aligned LEFT on all pages. */
+.masthead > .splat {
+  position: absolute;
+  z-index: 3;
+  left: 26px;
+  top: 104px;
+  width: clamp(240px, 28vw, 338px);
+  height: 86px;
+  margin: 0;
+  padding: 0;
+  display: block;
+  transform: none;
+}
+.masthead > .splat > img {
+  position: static;
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  transform: rotate(-3deg);
+  transform-origin: left center;
+  filter: drop-shadow(3px 3px 0 var(--ink)) drop-shadow(-2px -2px 0 var(--ink));
+}
+.masthead > .splat:hover > img { animation: none; transform: rotate(-3deg) translateY(-3px); }
+
+/* Exact shared slogan treatment; NO page-specific positioning differences. */
+.home .masthead .bubble.bubble-script,
+.catalog .masthead .bubble.bubble-script,
+.build .masthead .bubble.bubble-script {
+  position: absolute;
+  z-index: 4;
+  top: 11px;
+  left: 58%;
+  padding: 6px 12px;
+  font: 600 clamp(12px, 1.45vw, 18px)/1.3 Georgia, "Times New Roman", serif;
+  max-width: min(58%, 530px);
+  white-space: normal;
+  text-align: center;
+  letter-spacing: .1px;
+  color: var(--ink);
+  background: var(--cream);
+  border: 3px solid var(--ink);
+  border-radius: 18px;
+  box-shadow: 5px 5px 0 var(--coral);
+  text-shadow: none;
+  transform: translateX(-50%) rotate(-3deg);
+}
+.home .masthead .bubble.bubble-script::after,
+.catalog .masthead .bubble.bubble-script::after,
+.build .masthead .bubble.bubble-script::after { display: none; }
+.masthead > .mast-side { z-index: 6; }
+.masthead .abstract-stage { z-index: 0; }
+
+@media (max-width: 900px) and (min-width: 761px) {
+  .home .masthead .bubble.bubble-script,
+  .catalog .masthead .bubble.bubble-script,
+  .build .masthead .bubble.bubble-script { left: 61%; }
+  .masthead > .splat { width: 255px; left: 18px; top: 114px; }
+}
+@media (max-width: 760px) {
+  .home .masthead, .catalog .masthead, .build .masthead { min-height: 235px; }
+  .masthead > .splat {
+    position: absolute;
+    top: 101px;
+    left: 16px;
+    width: min(69%, 295px);
+    height: auto;
+    margin: 0;
+    flex: none;
+  }
+  .home .masthead .bubble.bubble-script,
+  .catalog .masthead .bubble.bubble-script,
+  .build .masthead .bubble.bubble-script {
+    left: 50%;
+    top: 7px;
+    max-width: calc(100% - 66px);
+    font-size: clamp(10px, 3vw, 15px);
+  }
+}
